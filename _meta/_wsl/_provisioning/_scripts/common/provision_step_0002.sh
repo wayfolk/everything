@@ -37,7 +37,7 @@ cd /home/wayfolk/_tools/
 # go build
 
 mkdir lfs-s3/
-cp /mnt/c/Midas/_work/_wayfolk/_git/everything/_meta/_wsl/_provisioning/_assets/lfs-s3 /home/wayfolk/_tools/lfs-s3/
+cp /mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_assets/lfs-s3 /home/wayfolk/_tools/lfs-s3/
 
 export PATH=$PATH:/home/wayfolk/_tools/lfs-s3/
 echo $PATH

@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://wsl+everything/home/wayfolk"
+		}
+	],
+	"remoteAuthority": "wsl+everything",
+	"settings": {}
+}
