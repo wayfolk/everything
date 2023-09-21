@@ -48,6 +48,10 @@ cd C:\Midas\_work\_wayfolk\something\_meta\_wsl\_provisioning\
 .\provision.ps1
 
 # note: to clone the secrets repo we need to manually use the token credentials (_github/theundebruijn/token) - once.
+
+# from now on we perform all tasks from within the wsl instance
+# assets / asset-sources can be saved directly onto the wsl filesystem from Windows
+wsl -d everything -u wayfolk
 ```
 
 
@@ -58,6 +62,13 @@ its primary use-case would be to backup _everything_.</sup>
 # pull in the base repo
 git clone https://github.com/wayfolk/everything.git
 cd <path to checkout dir>
+
+# make sure we preserve our saved line-endings
+git config --global core.autocrlf false
+
+# setup user details
+git config user.email "theun@theundebruijn.com"
+git config user.name "Theun de Bruijn"
 
 # setup custom lfs transferagent
 # make sure lfs-s3 is on the path — https://github.com/nicolas-graves/lfs-s3
@@ -74,10 +85,6 @@ git lfs pull
 
 # (optionally) clear env variables (example is for powershell)
 Remove-Item Env:\AWS_REGION; Remove-Item Env:\AWS_ACCESS_KEY_ID; Remove-Item Env:\AWS_SECRET_ACCESS_KEY; Remove-Item Env:\AWS_S3_ENDPOINT; Remove-Item Env:\S3_BUCKET;
-```
-```
-# additionaly you probably don't want git to mess with your line-endings
-git config core.autocrlf false
 ```
 ```
 ////////////////////////////////////////////////////////////
