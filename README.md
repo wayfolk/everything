@@ -17,7 +17,7 @@ git clone --filter=blob:none --no-checkout --depth 1 --sparse https://github.com
 cd .\something\
 
 # make sure we preserve our saved line-endings
-git config --global core.autocrlf false
+git config core.autocrlf false
 
 # setup user details
 git config user.email "theun@theundebruijn.com"
@@ -64,7 +64,7 @@ git clone https://github.com/wayfolk/everything.git
 cd <path to checkout dir>
 
 # make sure we preserve our saved line-endings
-git config --global core.autocrlf false
+git config core.autocrlf false
 
 # setup user details
 git config user.email "theun@theundebruijn.com"
