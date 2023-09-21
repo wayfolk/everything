@@ -46,6 +46,8 @@ Remove-Item Env:\AWS_REGION; Remove-Item Env:\AWS_ACCESS_KEY_ID; Remove-Item Env
 
 cd C:\Midas\_work\_wayfolk\something\_meta\_wsl\_provisioning\
 .\provision.ps1
+
+# note: to clone the secrets repo we need to manually use the token credentials (_github/theundebruijn/token) - once.
 ```
 
 
