@@ -30,7 +30,7 @@ git config --add lfs.standalonetransferagent lfs-s3
 git config --add lfs.concurrenttransfers 10
 
 # specify the (nested) folder(s) we'd like to pull in
-git sparse-checkout add _meta/_wsl/
+git sparse-checkout add _meta/
 git checkout
 
 # (optionally) clear env variables (example is for powershell)
