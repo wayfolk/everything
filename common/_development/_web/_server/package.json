@@ -1,0 +1,26 @@
+
+{
+  "name": "@wayfolk/common-development-web-server",
+  "version": "0.0.1",
+  "dependencies":
+  {
+    "async": "3.2.4",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.31.0"
+  },
+  "devDependencies":
+  {
+    "npm-check-updates": "16.14.4"
+  },
+  "scripts":
+  {
+  },
+  "os":
+  [
+    "linux"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

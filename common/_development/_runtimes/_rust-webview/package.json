@@ -1,0 +1,25 @@
+
+{
+  "name": "@wayf0000/common/_engine",
+  "dependencies":
+  {
+  },
+  "devDependencies":
+  {
+    "npm-check-updates": "16.14.2",
+    "@tauri-apps/cli": "1.4.0"
+  },
+  "scripts":
+  {
+    "tauri": "tauri"
+  },
+  "os":
+  [
+    "win32"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

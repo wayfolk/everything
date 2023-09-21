@@ -1,0 +1,28 @@
+
+{
+  "name": "@wayf0000/common/_engine",
+  "dependencies":
+  {
+    "esm": "3.2.25"
+  },
+  "devDependencies":
+  {
+    "npm-check-updates": "16.14.2",
+    "electron": "26.2.1",
+    "electron-packager": "17.1.2",
+    "electron-packager-languages": "0.5.0"
+  },
+  "main": "./_electron/esm.cjs",
+  "scripts":
+  {
+  },
+  "os":
+  [
+    "win32"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

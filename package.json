@@ -1,0 +1,75 @@
+
+{
+  "name": "@wayfolk/everything",
+  "dependencies":
+  {
+  },
+  "devDependencies":
+  {
+  },
+  "scripts":
+  {
+    "common-development-web-builder_install": "cd ./common/_development/_web/_builder/ && npm install",
+    "common-development-web-builder_update": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu",
+    "common-development-web-builder_upgrade": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-builder_clean": "cd ./common/_development/_web/_builder/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+
+
+
+    "common-development-web-server_install": "cd ./common/_development/_web/_server/ && npm install",
+    "common-development-web-server_update": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu",
+    "common-development-web-server_upgrade": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-server_clean": "cd ./common/_development/_web/_server/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-web-server_start": "cd ./common/_development/_web/_server/ && node Server.mjs",
+
+
+
+    "common-development-web-engine_install": "cd ./common/_development/_web/_engine/ && npm install",
+    "common-development-web-engine_update": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu",
+    "common-development-web-engine_upgrade": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-engine_clean": "cd ./common/_development/_web/_engine/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-web-engine_build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/",
+    "common-development-web-engine_build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/ --watch",
+
+
+
+
+
+
+
+    "common-development-runtimes-node-chromium_install": "cd ./common/_development/_runtimes/node-chromium/ && npm install",
+    "common-development-runtimes-node-chromium_update": "cd ./common/_development/_runtimes/node-chromium/ && ./node_modules/.bin/ncu",
+    "common-development-runtimes-node-chromium_upgrade": "cd ./common/_development/_runtimes/node-chromium/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-runtimes-node-chromium_clean": "cd ./common/_development/_runtimes/node-chromium/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-runtimes-node-chromium_dev": "cd ./common/_development/_runtimes/node-chromium/ && electron ./_electron/esm.cjs",
+    "common-development-runtimes-node-chromium_build": "cd ./common/_development/_runtimes/node-chromium/ && node ./_electron/build.mjs",
+
+
+
+    "projects-wayf0000-install": "cd ./_projects/wayf0000/ && npm install --force",
+    "projects-wayf0000-update": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu",
+    "projects-wayf0000-upgrade": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "projects-wayf0000-clean": "cd ./_projects/wayf0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-wayf0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/",
+    "projects-wayf0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/ --watch",
+
+    "projects-theu0000-install": "cd ./_projects/theu0000/ && npm install --force",
+    "projects-theu0000-update": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu",
+    "projects-theu0000-upgrade": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "projects-theu0000-clean": "cd ./_projects/theu0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-theu0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/",
+    "projects-theu0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/ --watch"
+
+
+
+  },
+  "os":
+  [
+    "linux"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

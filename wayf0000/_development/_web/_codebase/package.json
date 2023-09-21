@@ -1,0 +1,69 @@
+
+{
+  "name": "@wayf0000/_web",
+  "dependencies":
+  {
+    "pm2": "5.3.0"
+  },
+  "devDependencies":
+  {
+    "npm-check-updates": "16.14.4"
+  },
+  "scripts":
+  {
+    "projects-meta-builder-install": "cd ./../../../../common/_development/_web/_builder/ && npm install --force",
+    "projects-meta-builder-update": "cd ./../../../../common/_development/_web/_builder/ && ./node_modules/.bin/ncu",
+    "projects-meta-builder-upgrade": "cd ./../../../../common/_development/_web/_builder/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "projects-meta-builder-clean": "cd ./../../../../common/_development/_web/_builder/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+
+    "projects-wayf0000-install": "cd ./_projects/wayf0000/ && npm install --force",
+    "projects-wayf0000-update": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu",
+    "projects-wayf0000-upgrade": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "projects-wayf0000-clean": "cd ./_projects/wayf0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-wayf0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/",
+    "projects-wayf0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/ --watch",
+
+    "projects-theu0000-install": "cd ./_projects/theu0000/ && npm install --force",
+    "projects-theu0000-update": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu",
+    "projects-theu0000-upgrade": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "projects-theu0000-clean": "cd ./_projects/theu0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-theu0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/",
+    "projects-theu0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/ --watch",
+
+    "server-install": "cd ./_server/ && npm install --force",
+    "server-update": "cd ./_server/ && ./node_modules/.bin/ncu",
+    "server-upgrade": "cd ./_server/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
+    "server-clean": "cd ./_server/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "server-start": "cd ./_server/ && node Server.mjs",
+
+    "update": "./node_modules/.bin/ncu",
+    "upgrade": "./node_modules/.bin/ncu --upgrade && npm install --force",
+    "clean": "rm -rf ./node_modules/ && rm -f ./package-lock.json",
+
+    "install-all": "(npm install) && (npm run server-install) && (npm run projects-meta-builder-install) && (npm run projects-wayf0000-install) && (npm run projects-theu0000-install)",
+    "update-all": "(npm run update) && (npm run server-update) && (npm run projects-meta-builder-update) && (npm run projects-wayf0000-update) && (npm run projects-theu0000-update)",
+    "upgrade-all": "(npm run upgrade) && (npm run server-upgrade) && (npm run projects-meta-builder-upgrade) && (npm run projects-wayf0000-upgrade) && (npm run projects-theu0000-upgrade)",
+    "clean-all": "(npm run clean) && (npm run server-clean) && (npm run projects-meta-builder-clean) && (npm run projects-wayf0000-clean) && (npm run projects-theu0000-clean)",
+
+    "pm2-start-server": "cd ./_server/ && pm2 start Server.mjs --name WAYF0000-0001_Server.mjs --max-memory-restart 512M",
+    "pm2-stop-server": "pm2 stop WAYF0000-0001_Server.mjs",
+    "pm2-delete-server": "pm2 delete WAYF0000-0001_Server.mjs",
+    "pm2-reload-server": "pm2 reload WAYF0000-0001_Server.mjs",
+    "pm2-list": "pm2 list",
+    "pm2-monit": "pm2 monit",
+
+    "gh-actions_git-pull": "git pull",
+    "gh-actions_install-all": "(npm install) && (npm run server-install) && (npm run projects-meta-builder-install) && (npm run projects-wayf0000-install) && (npm run projects-theu0000-install)",
+    "gh-actions_build-all-projects": "(npm run projects-wayf0000-build) && (npm run projects-theu0000-build)",
+    "gh-actions_reload-server": "(npm run pm2-reload-server)"
+  },
+  "os":
+  [
+    "linux"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

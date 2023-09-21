@@ -1,0 +1,55 @@
+::selection
+{
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+}
+
+*
+{
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section
+{
+  width: 100%;
+  height: 430px;
+  background-color: black;
+
+  opacity: 0;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px) {}
+@media (max-width: 575.98px)
+{
+  section
+  {
+    height: 320px;
+  }
+}
+
+section p.acknowledgement
+{
+  margin: 0 auto;
+  padding: 100px 0 0 0;
+  width: 1090px;
+  text-align: center;
+  color: white;
+  font-family: "font_0003_eli";
+  font-size: 35px;
+  line-height: 55px;
+
+  opacity: 0;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px) {}
+@media (max-width: 575.98px)
+{
+  section p.acknowledgement
+  {
+    padding: 50px 0 0 0;
+    width: 300px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+}

@@ -1,0 +1,188 @@
+/*//////////////////////
+///// SECTION BASE /////
+//////////////////////*/
+
+section
+{
+  margin: 0 0 200px 0;
+}
+
+section .container
+{
+  position: relative;
+  margin: 0 auto;
+  padding: 150px 100px 150px 100px;
+  /* margin: -300px 0 0 50px; */
+  /* padding: 0 0 200px 110px; */
+  width: 800px;
+  /* height: 1200px; */
+  background-color: rgb(228, 254, 207);
+}
+
+section .container h2
+{
+  margin: 0 0 30px 0;
+  font-family: "font_0002_r";
+  font-size: 42px;
+}
+
+section .image
+{
+  position: absolute;
+  background-size: 100% 100%;
+}
+
+section video
+{
+  display: block;
+}
+
+section .container .client
+{
+  margin: 0 0 50px 0;
+  width: 100px;
+  height: 50px;
+  background-size: 100% 100%;
+}
+
+section .container p
+{
+  margin: 0 0 50px 0;
+  width: 700px;
+  font-family: "font_0003_li";
+  font-size: 27px;
+  line-height: 50px;
+}
+
+section .container .details,
+section .container .awards
+{
+  width: 750px;
+  font-family: "font_0003_li";
+  font-size: 17px;
+  line-height: 35px;
+  color: rgb(53, 53, 53);
+}
+
+section .container .details .column-left
+{
+  display: inline-block;
+  width: 80px;
+}
+
+section .container .details .emphasis
+{
+  font-family: "font_0003_m";
+  color: rgb(0, 0, 0);
+}
+
+section .container .awards
+{
+  position: absolute;
+  margin: -105px 0 0 400px;
+}
+
+section .container .awards .image
+{
+  width: 125px;
+  height: 125px;
+}
+
+
+/*//////////////////////////
+///// SECTION GORILLAZ /////
+////////////////////./////*/
+
+section#Gorillaz .container
+{
+  /* hack to offset from center */
+  transform: translateX(150px);
+}
+
+section#Gorillaz .image.Murdoc
+{
+  left: -1400px;
+  width: 1475px;
+  height: 1270px;
+}
+
+section#Gorillaz .image.Russel
+{
+  bottom: -500px;
+  left: 850px;
+  width: 713px;
+  height: 1501px;
+}
+
+section#Gorillaz .container p:nth-of-type(1)
+{
+  margin-left: -10px;
+}
+
+section#Gorillaz .container p:nth-of-type(2)
+{
+  margin-left: 10px;
+}
+
+section#Gorillaz .container p:nth-of-type(3)
+{
+  margin-left: 30px;
+}
+
+section#Gorillaz .container p:nth-of-type(4)
+{
+  margin-left: 40px;
+  width: 680px;
+}
+
+
+
+section#Gorillaz .container .details
+{
+  margin: 150px 0 0 40px;
+}
+
+section#Gorillaz .container .awards
+{
+  margin: -70px 0 0 460px;
+}
+
+section#Gorillaz .container .awards .image.Clio
+{
+  top: -68px;
+  left: -950px;
+}
+
+section#Gorillaz .container .awards .image.Cannes
+{
+  top: -68px;
+  left: -750px;
+}
+
+
+/* section .container p:nth-of-type(2)
+{
+  padding: 0 0 50px 50px;
+} */
+
+/* section video.ges0002
+{
+  margin: -120px auto 0 300px;
+  width: 65%;
+  max-width: 960px;
+} */
+
+
+
+
+
+
+
+
+
+/* section video.ges0001
+{
+  margin: 0 0 0 auto;
+  width: 90%;
+  max-width: 1920px;
+} */

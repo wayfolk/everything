@@ -1,0 +1,25 @@
+
+{
+  "name": "@wayfolk/common-development-web-builder",
+  "version": "0.0.1",
+  "dependencies":
+  {
+    "async": "3.2.4",
+    "npm-check-updates": "16.14.4",
+    "chokidar": "3.5.3",
+    "esbuild": "0.19.3",
+    "html-minifier": "4.0.0"
+  },
+  "scripts":
+  {
+  },
+  "os":
+  [
+    "linux"
+  ],
+  "cpu":
+  [
+    "x64"
+  ],
+  "private": true
+}

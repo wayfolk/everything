@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>_engine</title>
+    <style>
+      body
+      {
+        margin: 0;
+        /* TODO: implement a wait to prevent white flashing: https://github.com/tauri-apps/tauri/issues/1564 */
+        /* background-color: black; */
+      }
+      #btn_fullscreen
+      {
+        cursor: pointer;
+        color: red;
+      }
+    </style>
+    <script>
+      document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+  </head>
+  <body>
+    hello. let's <span id="btn_fullscreen">toggle fullscreen</span>.
+    <Script>
+      // TODO: replace with @tauri-apps/api/tauri npm package
+      const invoke = window.__TAURI__.invoke;
+
+      let bIsFullscreen = false;
+
+      const btn_fullscreen = document.getElementById("btn_fullscreen");
+
+      btn_fullscreen.addEventListener("click", function() {
+
+        if(!bIsFullscreen) { bIsFullscreen = true; } else { bIsFullscreen = false; };
+
+        __TAURI__.window.appWindow.setFullscreen(bIsFullscreen);
+
+        // test call to exposed backend function
+        invoke("my_custom_command", { invoke_message: 'Hello!' });
+
+      }.bind(this));
+    </Script>
+  </body>
+</html>

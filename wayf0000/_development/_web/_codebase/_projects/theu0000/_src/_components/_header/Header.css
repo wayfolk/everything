@@ -1,0 +1,207 @@
+::selection
+{
+  color: rgb(0, 0, 0);
+  background: rgb(228, 254, 207);
+}
+
+*
+{
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*////////////////
+///// HEADER /////
+////////////////*/
+
+header
+{
+  z-index: 1;
+  position: relative;
+  margin: 0 auto;
+  height: 745px;
+
+  color: rgb(228, 254, 207);
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  header
+  {
+    height: 500px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  header
+  {
+    height: 300px;
+  }
+}
+
+/*///////////////////
+///// HEADER H1 /////
+///////////////////*/
+
+header h1
+{
+  position: absolute;
+  margin: 0; /* normalize */
+  margin-left: 120px;
+  bottom: -34px;
+  /* width: 680px; */
+  font-family: "font_0001_r";
+  font-size: 110px;
+  font-weight: normal; /* normalize */
+  line-height: 140px;
+
+  opacity: 0; /* override in intro */
+}
+@media (max-width: 1399.98px)
+{
+  header h1
+  {
+    font-size: 100px;
+    line-height: 125px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  header h1
+  {
+    bottom: -19px;
+    margin-left: 60px;
+    /* width: 285px; */
+    font-size: 65px;
+    line-height: 80px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  header h1
+  {
+    bottom: -14px;
+    margin-left: -8px;
+    /* width: 285px; */
+    font-size: 43px;
+    line-height: 55px;
+  }
+}
+
+/*//////////////////////////
+///// HEADER .LOCATION /////
+//////////////////////////*/
+
+header .location
+{
+  position: absolute;
+  right: 120px;
+  bottom: 293px;
+  font-family: "font_0002_l";
+  font-size: 45px;
+
+  opacity: 0; /* override in intro */
+}
+@media (max-width: 1399.98px)
+{
+  header .location
+  {
+    font-size: 35px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  header .location {
+    /* height: 300px; */
+    right: 60px;
+    bottom: 170px;
+    /* width: 105px; */
+    font-size: 25px;
+    text-align: right;
+  }
+}
+@media (max-width: 575.98px)
+{
+  header .location {
+    /* height: 300px; */
+    right: -2px;
+    bottom: 140px;
+    width: 105px;
+    font-size: 20px;
+    text-align: right;
+  }
+}
+
+/*//////////////////////
+///// HEADER .YEAR /////
+//////////////////////*/
+
+header .year
+{
+  position: absolute;
+  right: 426px;
+  bottom: 239px;
+  font-family: "font_0002_r";
+  font-size: 45px;
+
+  opacity: 0; /* override in intro */
+}
+@media (max-width: 1399.98px)
+{
+  header .year
+  {
+    font-size: 35px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  header .year
+  {
+       /* height: 300px; */
+       right: 230px;
+       bottom: 140px;
+       /* width: 105px; */
+       font-family: "font_0002_l";
+       font-size: 25px;
+       text-align: right;
+  }
+}
+@media (max-width: 575.98px)
+{
+  header .year
+  {
+    left: -2px;
+    top: 90px;
+    font-family: "font_0002_l";
+    font-size: 20px;
+    text-align: left;
+  }
+}
+
+header .image
+{
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  /* we can rewrite css on build, or set the bg image in js */
+  /* background-image: url("./_assets/_images/header_background_3840x1491_q80.webp"); */
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0;
+}
+
+/* header .blend
+{
+  position: absolute;
+  z-index: -1;
+  margin: -1500px 0 0 -1500px;
+  width: 3000px;
+  height: 3000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 172 65) 0%, rgb(0 0 0 / 0%) 50%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+} */
