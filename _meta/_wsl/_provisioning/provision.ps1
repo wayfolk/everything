@@ -20,7 +20,7 @@ foreach ($instance in $instances)
   $wsl_terminate = 'wsl.exe --terminate '
   $wsl_unregister = 'wsl.exe --unregister '
 
-  $expression = $wsl_root_bash + '/mnt/c/Midas/_work/_wayfolk/_wsl/_provisioning/_scripts/common/provision_step_0001.sh'
+  $expression = $wsl_root_bash + '/mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_scripts/common/provision_step_0001.sh'
   Write-Output $expression
   Invoke-Expression $expression
 
@@ -28,11 +28,11 @@ foreach ($instance in $instances)
   Write-Output $expression
   Invoke-Expression $expression
 
-  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/_wsl/_provisioning/_scripts/common/provision_step_0002.sh'
+  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_scripts/common/provision_step_0002.sh'
   Write-Output $expression
   Invoke-Expression $expression
 
-  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/_wsl/_provisioning/_scripts/common/provision_step_0003.sh'
+  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_scripts/common/provision_step_0003.sh'
   Write-Output $expression
   Invoke-Expression $expression
 
@@ -40,7 +40,7 @@ foreach ($instance in $instances)
   Write-Output $expression
   Invoke-Expression $expression
 
-  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/_wsl/_provisioning/_scripts/common/provision_step_0004.sh'
+  $expression = $wsl_wayfolk_bash + '/mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_scripts/common/provision_step_0004.sh'
   Write-Output $expression
   Invoke-Expression $expression
 }

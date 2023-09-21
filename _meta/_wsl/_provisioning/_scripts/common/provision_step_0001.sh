@@ -7,7 +7,7 @@ passwd -d wayfolk
 
 ### let's grab the wsl config ###
 
-cp /mnt/c/Midas/_work/_wayfolk/_wsl/_provisioning/_assets/wsl.conf /etc/
+cp /mnt/c/Midas/_work/_wayfolk/something/_meta/_wsl/_provisioning/_assets/wsl.conf /etc/
 
 
 ### and we're done here ###

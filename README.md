@@ -16,6 +16,9 @@ cd C:\Midas\_work\_wayfolk\
 git clone --filter=blob:none --no-checkout --depth 1 --sparse https://github.com/wayfolk/everything.git .\something
 cd .\something\
 
+# make sure we preserve our saved line-endings
+git config --global core.autocrlf false
+
 # setup user details
 git config user.email "theun@theundebruijn.com"
 git config user.name "Theun de Bruijn"
