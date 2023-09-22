@@ -23,17 +23,18 @@ let options =
   ]
 };
 
+// building this on linux requires wine - see https://github.com/electron/electron-packager#building-windows-apps-from-non-windows-platforms
 let optionsWindows =
 {
   platform: "win32",
   arch: "x64",
-  win32metadata:
-  {
-    "CompanyName": "Wayfolk",
-    "FileDescription": "wayfolk-runtime",
-    "InternalName": "wayfolk-runtime",
-    "ProductName": "wayfolk-runtime",
-  },
+  // win32metadata:
+  // {
+  //   "CompanyName": "Wayfolk",
+  //   "FileDescription": "wayfolk-runtime",
+  //   "InternalName": "wayfolk-runtime",
+  //   "ProductName": "wayfolk-runtime",
+  // },
 };
 
 let optionsMac =

@@ -86,6 +86,24 @@ git lfs pull
 # (optionally) clear env variables (example is for powershell)
 Remove-Item Env:\AWS_REGION; Remove-Item Env:\AWS_ACCESS_KEY_ID; Remove-Item Env:\AWS_SECRET_ACCESS_KEY; Remove-Item Env:\AWS_S3_ENDPOINT; Remove-Item Env:\S3_BUCKET;
 ```
+###### runn-ing
+```
+# these steps are post checkout + post provisioning
+
+# powershell
+wsl -d everything -u wayfolk
+
+### ENGINE DEV ###
+
+# bash
+ip addr # (assign to windows host file as <ip> _local_engine.wayfolk.com)
+cd ~/_git/everything/
+npm run engine-install
+npm run engine-dev
+
+# visit https://_local_engine.wayfolk.com
+
+```
 ```
 ////////////////////////////////////////////////////////////
 //////////////////////////.        /////////////////////////
