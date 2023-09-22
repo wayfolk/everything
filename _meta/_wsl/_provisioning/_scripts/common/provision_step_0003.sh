@@ -11,6 +11,9 @@ cd /home/wayfolk/_git/
 # this requires our username/pass as it contains our ssh key(s)
 # after this we use those for the everything repo
 git clone https://github.com/wayfolk/secrets
+cd /home/wayfolk/_git/secrets/
+git config user.email "theun@theundebruijn.com"
+git config user.name "Theun de Bruijn"
 
 
 ### copy ssh keys
@@ -29,3 +32,8 @@ echo "ssh-add /home/wayfolk/.ssh/id_ed25519_github_theundebruijn" >> ~/.bash_pro
 
 source /home/wayfolk/_git/secrets/_env/_wsl/common/env.sh
 echo "source /home/wayfolk/_git/secrets/_env/_wsl/common/env.sh" >> ~/.bash_profile
+
+
+### and we're done here ###
+
+exit
