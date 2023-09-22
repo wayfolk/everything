@@ -93,6 +93,24 @@ Remove-Item Env:\AWS_REGION; Remove-Item Env:\AWS_ACCESS_KEY_ID; Remove-Item Env
 # powershell
 wsl -d everything -u wayfolk
 
+### WAYF0000 DEV ###
+
+# bash
+ip addr # (assign to windows host file as <ip> _local.wayfolk.com)
+cd ~/_git/everything/
+npm install
+npm run wayf0000-install
+npm run wayf0000-dev
+
+### THEU0000 DEV ###
+
+# bash
+ip addr # (assign to windows host file as <ip> _local.theundebruijn.com)
+cd ~/_git/everything/
+npm install
+npm run theu000-install
+npm run theu000-dev
+
 ### ENGINE DEV ###
 
 # bash
@@ -101,7 +119,6 @@ cd ~/_git/everything/
 npm install
 npm run engine-install
 npm run engine-dev
-
 
 ### RUNTIME DEV ###
 

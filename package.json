@@ -40,20 +40,28 @@
     "common-development-runtimes-node-chromium_build": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/build.mjs",
 
 
-    "projects-wayf0000-install": "cd ./_projects/wayf0000/ && npm install --force",
-    "projects-wayf0000-update": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu",
-    "projects-wayf0000-upgrade": "cd ./_projects/wayf0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
-    "projects-wayf0000-clean": "cd ./_projects/wayf0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
-    "projects-wayf0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/",
-    "projects-wayf0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/wayf0000/ --watch",
+    "projects-wayf0000-install": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && npm install",
+    "projects-wayf0000-update": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && ./node_modules/.bin/ncu",
+    "projects-wayf0000-upgrade": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "projects-wayf0000-clean": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-wayf0000-build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/wayf0000/",
+    "projects-wayf0000-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/wayf0000/ --watch",
 
 
-    "projects-theu0000-install": "cd ./_projects/theu0000/ && npm install --force",
-    "projects-theu0000-update": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu",
-    "projects-theu0000-upgrade": "cd ./_projects/theu0000/ && ./node_modules/.bin/ncu --upgrade && npm install --force",
-    "projects-theu0000-clean": "cd ./_projects/theu0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
-    "projects-theu0000-build": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/",
-    "projects-theu0000-build-watch": "cd ./../../../../common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/_projects/theu0000/ --watch",
+    "projects-theu0000-install": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && npm install",
+    "projects-theu0000-update": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && ./node_modules/.bin/ncu",
+    "projects-theu0000-upgrade": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "projects-theu0000-clean": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && rm -rf ./node_modules/ && rm -f ./package-lock.json && rm -rf ./_build/",
+    "projects-theu0000-build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/theu0000/",
+    "projects-theu0000-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/theu0000/ --watch",
+
+
+    "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-theu0000-install\"",
+    "wayf0000-dev": "",
+
+
+    "theu000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-wayf0000-install\"",
+    "theu000-dev": "concurrently -p \"{name}:\" -n \"server_start,theu0000-build-watch\" -c \"dim\" \"npm:common-development-web-server_start\" \"npm:projects-theu0000-build-watch\"",
 
 
     "engine-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:common-development-web-engine_install\"",

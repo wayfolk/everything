@@ -322,11 +322,11 @@ class HttpsServer extends Server
   {
     if (sParsedRequestHost === "wayfolk.com")
     {
-      return "../_projects/wayf0000/_build";
+      return "../../../../wayf0000/_development/_web/_codebase/_projects/wayf0000/_build";
     }
     else if (sParsedRequestHost === "theundebruijn.com")
     {
-      return "../_projects/theu0000/_build";
+      return "../../../../wayf0000/_development/_web/_codebase/_projects/theu0000/_build";
     }
     else if (sParsedRequestHost ==="_local_engine.wayfolk.com")
     {

@@ -8,7 +8,7 @@
     "detect-gpu": "5.0.37",
     "gsap": "3.12.2",
     "three": "0.156.1",
-    "postprocessing": "6.33.0",
+    "postprocessing": "6.33.1",
     "stats-gl": "1.0.5"
   },
   "devDependencies":
