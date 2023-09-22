@@ -5,7 +5,9 @@ sudo dnf install -y iproute
 
 # we need wine to build electron for win32 on linux - https://github.com/electron/electron-packager#building-windows-apps-from-non-windows-platforms
 # TODO: see if we can remove this requirement by exposing the windows path via interopt
-# sudo dnf install -y wine
+# if we enable interopt now we get errors appending the path later (bash: /home/wayfolk/.bash_profile: line 9: syntax error near unexpected token `(')
+sudo dnf install -y wine
+
 
 ### check to make sure things are available on the path/env ###
 
