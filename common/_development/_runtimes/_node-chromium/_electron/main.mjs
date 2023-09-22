@@ -47,7 +47,8 @@ const createWindow = function()
 
   win.webContents.openDevTools({ mode: 'detach' });
 
-  win.loadFile(path.join(__dirname, '../_build/index.html'));
+  // win.loadFile(path.join(__dirname, '../_build/index.html'));
+    win.loadURL("https://_local_engine.wayfolk.com");
 
   // waiting here prevents white flash
   win.on

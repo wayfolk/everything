@@ -36,7 +36,7 @@
     "common-development-runtimes-node-chromium_update": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu",
     "common-development-runtimes-node-chromium_upgrade": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu --upgrade && npm install",
     "common-development-runtimes-node-chromium_clean": "cd ./common/_development/_runtimes/_node-chromium/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
-    "common-development-runtimes-node-chromium_dev": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/electron ./_electron/esm.cjs",
+    "common-development-runtimes-node-chromium_dev": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/dev.mjs",
     "common-development-runtimes-node-chromium_build": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/build.mjs",
 
 
@@ -62,7 +62,6 @@
 
     "runtime-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-runtimes-node-chromium_install\"",
     "runtime-dev": "concurrently -p \"{name}:\" -n \"node-chromium_dev\" -c \"dim\" \"npm:common-development-runtimes-node-chromium_dev\"",
-    "runtime-build": "concurrently -p \"{name}:\" -n \"node-chromium_build\" -c \"dim\" \"npm:common-development-runtimes-node-chromium_build\"",
 
 
     "update": "./node_modules/.bin/ncu",

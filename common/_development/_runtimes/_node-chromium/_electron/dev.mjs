@@ -19,7 +19,8 @@ let options =
   afterCopy:
   [
     setLanguages(['en_GB'])
-  ]
+  ],
+  out: "/mnt/c/Midas/_work/_wayfolk/_temp/",
 };
 
 // building this on linux requires wine - see https://github.com/electron/electron-packager#building-windows-apps-from-non-windows-platforms
@@ -34,7 +35,6 @@ let optionsWindows =
     "InternalName": "wayfolk-runtime",
     "ProductName": "wayfolk-runtime",
   },
-  out: "/mnt/c/Midas/_work/_wayfolk/_temp/",
 };
 
 let optionsMac =
@@ -42,14 +42,12 @@ let optionsMac =
   platform: "darwin",
   arch: "arm64",
   appCategoryType: "Entertainment",
-  out: "_dist",
 };
 
 let optionsLinux =
 {
   platform: "linux",
   arch: "x64",
-  out: "_dist",
 };
 
 let promises = [

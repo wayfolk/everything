@@ -109,7 +109,11 @@ npm run engine-dev
 cd ~/_git/everything/
 npm install
 npm run runtime-install
-npm run runtime-build
+# this is actually a full build but instead of bundled assets we load (https://_local_engine.wayfolk.com)
+# the reason for doing this is that we can't run the electron dev version for win32 from wsl
+npm run runtime-dev
+# run the .exe from C:\Midas\_work\_wayfolk\_temp
+# to actually have something load in the runtime dev follow the ENGINE DEV steps above
 
 
 # visit https://_local_engine.wayfolk.com
