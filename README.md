@@ -98,8 +98,19 @@ wsl -d everything -u wayfolk
 # bash
 ip addr # (assign to windows host file as <ip> _local_engine.wayfolk.com)
 cd ~/_git/everything/
+npm install
 npm run engine-install
 npm run engine-dev
+
+
+### RUNTIME DEV ###
+
+# bash
+cd ~/_git/everything/
+npm install
+npm run runtime-install
+npm run runtime-build
+
 
 # visit https://_local_engine.wayfolk.com
 

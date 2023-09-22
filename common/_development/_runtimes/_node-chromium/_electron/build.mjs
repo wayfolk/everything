@@ -13,7 +13,6 @@ let options =
   dir: ".",
   ignore: "^/_src",
   asar: false,
-  out: "_dist",
   overwrite: true,
   //icon: ,
   prune: true,
@@ -35,6 +34,7 @@ let optionsWindows =
   //   "InternalName": "wayfolk-runtime",
   //   "ProductName": "wayfolk-runtime",
   // },
+  out: "/mnt/c/Midas/_work/_wayfolk/_temp/",
 };
 
 let optionsMac =
@@ -42,12 +42,14 @@ let optionsMac =
   platform: "darwin",
   arch: "arm64",
   appCategoryType: "Entertainment",
+  out: "_dist",
 };
 
 let optionsLinux =
 {
   platform: "linux",
   arch: "x64",
+  out: "_dist",
 };
 
 let promises = [
