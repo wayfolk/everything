@@ -1,6 +1,7 @@
 ##### PROVISION STEP 0004 - WAYFOLK USER #####
 
-sudo dnf install -y git git-lfs
+# grab iproute to be able to use `ip addr`
+sudo dnf install -y iproute
 
 
 ### check to make sure things are available on the path/env ###
