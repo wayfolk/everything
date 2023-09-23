@@ -1,7 +1,7 @@
 #webgl
 {
   width: 100%; /* window.innerWidth */
-  height: 1000px; /* window.innerHeight */
+  height: 1000px;
 }
 
 #overlay
@@ -15,4 +15,8 @@
   mix-blend-mode: lighten;
 
   pointer-events: none;
+}
+
+#logomark {
+  width: 100px;
 }

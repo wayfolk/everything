@@ -2,8 +2,3 @@
 memory=16G
 localhostForwarding=false
 guiApplications=false
-
-[experimental]
-autoMemoryReclaim=gradual
-sparseVhd=true
-networkingMode=mirrored

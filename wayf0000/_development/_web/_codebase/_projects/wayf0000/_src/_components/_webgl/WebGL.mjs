@@ -122,6 +122,8 @@ class WebGL extends HTMLElement
       );
     }
 
+    this.domElement = this.domShadowRoot.querySelector("#webgl");
+
     fCB();
   };
 
@@ -137,6 +139,12 @@ class WebGL extends HTMLElement
       ],
       function (err, results)
       {
+        let onWindoResize = function(e) {
+          this.setElementSizes(this.domElement.clientWidth, this.domElement.clientHeight);
+        };
+
+        window.addEventListener("resize", onWindoResize.bind(this));
+
         console.log("_webGL: setEventHandlers: done");
 
         fCB();
@@ -174,10 +182,12 @@ class WebGL extends HTMLElement
 
   createScene(fCB)
   {
-    const domWebgl = this.domShadowRoot.querySelector("#webgl");
-    const nDomWebglWidth = domWebgl.clientWidth;
-    const nDomWebglHeight = domWebgl.clientHeight;
+    const nDomWebglWidth = this.domElement.clientWidth;
+    console.log(nDomWebglWidth)
+    const nDomWebglHeight = this.domElement.clientHeight;
+    console.log(nDomWebglHeight)
     const fPixelRatio = window.devicePixelRatio; // 720 x 3 = 2160 //  window.devicePixelRatio
+    // const fPixelRatio = 1.0; // 720 x 3 = 2160 //  window.devicePixelRatio
 
     this.scene = new THREE.Scene();
 
@@ -236,7 +246,7 @@ class WebGL extends HTMLElement
     this.renderer.shadowMap.needsUpdate = true;
     this.renderer.setClearColor(new THREE.Color(0xffffff), .0); // controls bg alpha too
     this.renderer.info.autoReset = false;
-    domWebgl.appendChild(this.renderer.domElement);
+    this.domElement.appendChild(this.renderer.domElement);
 
     // https://pmndrs.github.io/postprocessing/public/docs/
     // https://github.com/pmndrs/postprocessing#output-color-space
@@ -430,9 +440,9 @@ class WebGL extends HTMLElement
       const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
       const mirror = new Reflector(mirrorGeometry, {
         clipBias: 0.000001,
-        textureWidth: 4096,
-        textureHeight: 4096,
-        color: new THREE.Color(0xffffff),
+        textureWidth: 2048,
+        textureHeight: 2048,
+        color: new THREE.Color(0xcccccc),
       });
       mirror.position.y = -0.01;
       mirror.position.z = 0;
@@ -492,6 +502,8 @@ class WebGL extends HTMLElement
     this.controls.dampingFactor = 0.04;
     this.controls.zoomSpeed = 0.75;
 
+    this.controls.enabled = false;
+
 
     this.controls.target.x = 4.332140571237076
     this.controls.target.y = -4.277790315650077;
@@ -503,18 +515,24 @@ class WebGL extends HTMLElement
     fCB();
   };
 
+  setElementSizes(updatedWidth, updatedHeight) {
+    // this.domElement.style.clientWidth = updatedWidth + 'px';
+    // this.domElement.style.clientHeight = updatedHeight + 'px';
+
+    this.renderer.setSize(updatedWidth, updatedHeight);
+
+    this.camera.aspect = updatedWidth / updatedHeight;
+    this.camera.updateProjectionMatrix();
+  };
+
   createAnimationLoop(fCB)
   {
-
-    // this.controls.enabled = false;
 
     gsap.fromTo
     (
       this.entities.lights['pointLight'].position,
-      { x: 10 }, { x: -10, duration: 10.000, ease: "sine.inOut", repeat: -1, yoyo: true },
+      { x: 25 }, { x: -25, duration: 10.000, ease: "sine.inOut", repeat: -1, yoyo: true },
     );
-
-
 
     gsap.to
     (
@@ -529,59 +547,15 @@ class WebGL extends HTMLElement
     );
 
 
-
     this.renderer.setAnimationLoop(this.tick.bind(this));
     fCB();
   };
 
   tick()
   {
-    const time = Date.now() * 0.001;
-
-    // this.InstancedMesh.rotation.x = Math.sin( time / 4 );
-		// this.InstancedMesh.rotation.y = Math.sin( time / 2 );
-
-    // let i = 0;
-    // const offset = ( this.nInstancedMeshCount - 1 ) / 3;
-
-    // for ( let x = 0; x < this.nInstancedMeshCount; x ++ )
-    // {
-    //   for ( let y = 0; y < this.nInstancedMeshCount; y ++ )
-    //   {
-    //     for ( let z = 0; z < this.nInstancedMeshCount; z ++ )
-    //     {
-    //       this.oDummy.position.set( offset - x, offset + y*2, offset - z*2 );
-    //       this.oDummy.rotation.y = ( Math.sin( x / 4 + time ) + Math.sin( y / 4 + time ) + Math.sin( z / 4 + time ) );
-    //       this.oDummy.rotation.z = this.oDummy.rotation.y * 2;
-
-    //       this.oDummy.updateMatrix();
-
-    //       this.InstancedMesh.setMatrixAt( i ++, this.oDummy.matrix );
-    //     };
-    //   };
-    // };
-
-    // this.InstancedMesh.instanceMatrix.needsUpdate = true;
-    // this.InstancedMesh.computeBoundingSphere();
-
-
-
-
-    // console.log("camera pos:")
-    // console.log(this.camera.position)
-
-    // console.log("controls target:")
-    // console.log(this.controls.target)
-
-
-    // gsap.updateRoot(time)
-    // gsap.ticker.tick();
-    // this.camera.updateProjectionMatrix();
-
     // this order is important!
     this.controls.update();
     this.composer.render();
-
   };
 };
 
