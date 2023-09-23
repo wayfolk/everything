@@ -1,4 +1,4 @@
-![header image showing two bare feet coloured in australian red](_meta/_github/_readme/_assets/_images/wayfolk_githubheader_2000x750_16bit_sRGB_0001.png?raw=true "wayfolk_githubheader")
+![header image showing two bare feet coloured in australian red](_meta/_github/_readme/_assets/_images/wayfolk_githubheader_2000x900_16bit_sRGB.png?raw=true "wayfolk_githubheader")
 
 ###### haiku-ing
 <sup>monorepo _git_\
