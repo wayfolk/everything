@@ -1,30 +1,37 @@
-console.log("_main: build id: " + sBuildUUID);
-
 ///////////////////
 ///// IMPORTS /////
 ///////////////////
 
-/// NPM
-import { parallel, series } from "async";
+///// NPM
+import { log, parallel, series } from "async";
+import { gsap } from "gsap";
 
-/// LOCAL
+///// LOCAL
 import { ENV } from "./_utils/ENV.mjs";
 import { DOM } from "./_utils/DOM.mjs";
 
-/// ASSETS
+///// JS ASSETS
 import sHTML from "./Main.html";
 import sCSS from "./Main.css";
-// TODO: refactor
-// import font0 from "./_assets/_fonts/0000.woff2";
-// import font1 from "./_assets/_fonts/0001.woff2";
-// import font2 from "./_assets/_fonts/0002.woff2";
 
-// TODO: refactor
+///// CSS ASSETS
+// import font_0001_r from "./_assets/_fonts/font_0001_r.woff2";
+// import font_0002_r from "./_assets/_fonts/font_0002_r.woff2";
+// import font_0002_l from "./_assets/_fonts/font_0002_l.woff2";
+// import font_0003_li from "./_assets/_fonts/font_0003_li.woff2";
+// import font_0003_m from "./_assets/_fonts/font_0003_m.woff2";
+// import font_0003_i from "./_assets/_fonts/font_0003_i.woff2";
+// import font_0003_el from "./_assets/_fonts/font_0003_el.woff2";
+// import font_0003_eli from "./_assets/_fonts/font_0003_eli.woff2";
+
+///// COMPONENTS
 // import Header from "./_components/_header/Header.mjs";
 // import Acknowledgement from "./_components/_acknowledgement/Acknowledgement.mjs";
+// import Curriculumvitae from "./_components/_curriculumvitae/Curriculumvitae.mjs";
+// import Casestudy from "./_components/_casestudy/Casestudy.mjs";
+// import Footer from "./_components/_footer/Footer.mjs";
 
-// import WebGL from "./_components/_webgl/WebGL.mjs";
-// const _webGL = new WebGL();
+import WebGL from "./_components/_webgl/WebGL.mjs";
 
 /////////////////
 ///// CLASS /////
@@ -49,23 +56,31 @@ class Main extends HTMLElement
 
   __init()
   {
-    parallel(
+    parallel
+    (
       [
         function(fCB) { ENV.detectGPU(fCB); }.bind(this),
-        // function(fCB) { this.loadFonts(fCB); }.bind(this),
+        function(fCB) { this.loadFonts(fCB); }.bind(this),
         function(fCB) { this.createComponentInstances(fCB); }.bind(this),
         function(fCB) { this.createShadowDOM(fCB); }.bind(this),
         function(fCB) { this.populateShadowDOM(fCB); }.bind(this),
+        function(fCB) { this.setEventHandlers(fCB); }.bind(this),
       ],
       function (err, results)
       {
         console.log("_main: __init: done");
 
-        // console.log(ENV.getGPU());
+        console.log("donezo's. all components initialized.")
 
-        // TODO?: bind in scroll event handlers
-        // this.components._header.intro();
-        // this.components._acknowledgement.intro();
+        // TODO?: refac this?
+        // Handle the color of the body here instead of CSS, so we don't get a flash on first paint.
+        // The delay prevents an ugly blend with the component .intro() animations.
+        gsap.fromTo
+        (
+          document.body,
+          { backgroundColor: "rgb(255, 255, 255)"},
+          { backgroundColor: "rgb(255, 253, 249)", duration: .900, delay: 1.0, ease: "none" },
+        );
       }.bind(this)
     );
   };
@@ -107,33 +122,37 @@ class Main extends HTMLElement
 
     DOM.append(this, document.body);
 
-    // TODO: refactor this
-    // DOM.append(_header, this.domShadowRoot);
-    // DOM.append(_webGL, this.domShadowRoot);
-
     fCB();
   };
 
   loadFonts(fCB)
   {
-    const load = function(sFontFace, sFontFacePath, fCB2) {
+    const load = function(sFontFace, sFontFacePath, fCB2)
+    {
       const fontFace = new FontFace(sFontFace, "url(" + sFontFacePath + ")");
       fontFace.load()
       .then
       (function(loadedFont)
         {
-        document.fonts.add(loadedFont);
+          document.fonts.add(loadedFont);
 
-        fCB2()
+          fCB2()
         }
       );
     };
 
-    parallel(
+    parallel
+    (
       [
-        function(fCB2) { load("0000", font0, fCB2); }.bind(this),
-        function(fCB2) { load("0001", font1, fCB2); }.bind(this),
-        function(fCB2) { load("0002", font2, fCB2); }.bind(this),
+        // TODO: check if we use all these
+        // function(fCB2) { load("font_0001_r", font_0001_r, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0002_r", font_0002_r, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0002_l", font_0002_l, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0003_li", font_0003_li, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0003_m", font_0003_m, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0003_i", font_0003_i, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0003_el", font_0003_el, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0003_eli", font_0003_eli, fCB2); }.bind(this),
       ],
       function (err, results)
       {
@@ -141,45 +160,115 @@ class Main extends HTMLElement
         fCB();
       }.bind(this)
     );
-
   };
 
   createComponentInstances(fCB)
   {
-    // this.components._header = new Header();
-    // this.components._acknowledgement = new Acknowledgement();
+    parallel
+    (
+      [
+        // function(fCB) { this.components._header = new Header(fCB); }.bind(this),
+        // function(fCB) { this.components._acknowledgement = new Acknowledgement(fCB); }.bind(this),
+        // function(fCB) { this.components._curriculumvitae = new Curriculumvitae(fCB); }.bind(this),
+        // function(fCB) { this.components._casestudyGorillaz = new Casestudy(fCB, "Gorillaz"); }.bind(this),
+        // function(fCB) { this.components._casestudyGoogleEarthStudio = new Casestudy(fCB, "GoogleEarthStudio"); }.bind(this),
+        // function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
+        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
 
-    fCB();
+      ],
+      function (err, results)
+      {
+        fCB();
+
+      }.bind(this)
+    );
+    // this.components._webGL = new WebGL();
   };
 
   populateShadowDOM(fCB)
   {
     // DOM.append(this.components._header, this.domShadowRoot);
     // DOM.append(this.components._acknowledgement, this.domShadowRoot);
+    // DOM.append(this.components._curriculumvitae, this.domShadowRoot);
+    // DOM.append(this.components._casestudyGorillaz, this.domShadowRoot);
+    // DOM.append(this.components._casestudyGoogleEarthStudio, this.domShadowRoot);
+    // DOM.append(this.components._footer, this.domShadowRoot);
+
+    DOM.append(this.components._webGL, this.domShadowRoot);
 
     fCB();
   };
 
+  setEventHandlers(fCB)
+  {
+    const onDomScrollListener = window.addEventListener
+    (
+      "scroll", this.onDomScrollCallback.bind(this)
+    );
 
-  // setEventHandlers(fCB)
-  // {
-  //   console.log("EHRHERHEHEHR")
-  //   let onDomLoaded = function(fCB2) {
-  //     window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-  //   };
+    // We call it once, as the browser initially doesn't fire this event
+    this.onDomScrollCallback()
 
-  //   series(
-  //     [
-  //       function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-  //     ],
-  //     function (err, results)
-  //     {
-  //       console.log("_main: setEventHandlers: done");
+    const onDomLoaded = function(fCB)
+    {
+      window.addEventListener("DOMContentLoaded", function(e) { fCB(); }.bind(this));
+    };
 
-  //       fCB();
-  //     }.bind(this)
-  //   );
-  // };
+    onDomLoaded(fCB);
+  };
+
+  onDomScrollCallback = function(e)
+  {
+    this.onScrollCallComponentIntro();
+  };
+
+  onScrollCallComponentIntro()
+  {
+    // NOTE: Components are responsible for checking if their intro has already been called.
+    // if (this.testComponentInView("_header")) this.components._header.intro();
+    // if (this.testComponentInView("_acknowledgement")) this.components._acknowledgement.intro();
+    // if (this.testComponentInView("_curriculumvitae")) this.components._curriculumvitae.intro();
+    // if (this.testComponentInView("_casestudyGoogleEarthStudio")) this.components._curriculumvitae.intro();
+    // if (this.testComponentInView("_footer")) this.components._footer.intro();
+  };
+
+  /////////////////////////
+  ///// CLASS METHODS /////
+  /////////////////////////
+
+  /**
+   * High performance way of determining if a component is in view.
+   * By that we mean enough of it is visible to treat is as being active.
+   * There's an optional arg for how much of the element should be visible before returning true.
+   * - we rely on the offsetTop of the component, relative to the position of the Main component.
+   * - this way we do not need to request a getBoundingClientRect.
+   * - NOTE: this only works when the Main component is the direct parent of the component.
+   * @param {object} sComponentInstance String referring to the name of the component instance (eg, "_header");
+   */
+  testComponentInView(sComponentInstance, nPercentageInView = 100)
+  {
+    const domComponent = this.components[sComponentInstance];
+
+    let nDomComponentHeight = domComponent.offsetHeight;
+    let nDomComponentTopOffsetY = domComponent.offsetTop;
+    let nDomComponentBottomOffsetY = domComponent.offsetTop + nDomComponentHeight;
+
+    let nViewportHeight = window.innerHeight;
+    let nViewportTopOffsetY = window.scrollY;
+    let nViewportBottomOffsetY = window.scrollY + nViewportHeight;
+
+    // Ok. some part of our component is visible.
+    if (nDomComponentTopOffsetY <= nViewportBottomOffsetY && nDomComponentBottomOffsetY >= nViewportTopOffsetY)
+    {
+      // TODO calc percentage of component visible
+
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 };
 
 ////////////////////////////////////
@@ -196,8 +285,10 @@ customElements.define
 ///// INSTANTIATION /////
 /////////////////////////
 
-const _main = new Main();
-
+// Log out just for Main.mjs
+console.log
+(
+`
 ////////////////////////////////////////////////////////////
 //////////////////////////.        /////////////////////////
 /////////////////////     .      ..  ...////////////////////
@@ -218,3 +309,9 @@ const _main = new Main();
 ///////////////////////  ,*%%/@//(*   ./////////////////////
 //////////////////////                 /////////////////////
 ////////////////////                     ///////////////////
+
+_main: build id: ` + sBuildUUID + `\n\n`
+);
+
+
+const _main = new Main();

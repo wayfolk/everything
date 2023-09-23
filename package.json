@@ -56,8 +56,8 @@
     "projects-theu0000-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/theu0000/ --watch",
 
 
-    "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-theu0000-install\"",
-    "wayf0000-dev": "",
+    "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-wayf0000-install\"",
+    "wayf0000-dev": "concurrently -p \"{name}:\" -n \"server_start,wayf0000-build-watch\" -c \"dim\" \"npm:common-development-web-server_start\" \"npm:projects-wayf0000-build-watch\"",
 
 
     "theu000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-wayf0000-install\"",
