@@ -15,8 +15,8 @@ import sHTML from "./Main.html";
 import sCSS from "./Main.css";
 
 ///// CSS ASSETS
-// import font_0001_r from "./_assets/_fonts/font_0001_r.woff2";
-// import font_0002_r from "./_assets/_fonts/font_0002_r.woff2";
+import font_0001_m from "./_assets/_fonts/Pitch-Medium.woff2";
+import font_0001_mi from "./_assets/_fonts/Pitch-Medium.woff2";
 // import font_0002_l from "./_assets/_fonts/font_0002_l.woff2";
 // import font_0003_li from "./_assets/_fonts/font_0003_li.woff2";
 // import font_0003_m from "./_assets/_fonts/font_0003_m.woff2";
@@ -25,13 +25,8 @@ import sCSS from "./Main.css";
 // import font_0003_eli from "./_assets/_fonts/font_0003_eli.woff2";
 
 ///// COMPONENTS
-// import Header from "./_components/_header/Header.mjs";
-// import Acknowledgement from "./_components/_acknowledgement/Acknowledgement.mjs";
-// import Curriculumvitae from "./_components/_curriculumvitae/Curriculumvitae.mjs";
-// import Casestudy from "./_components/_casestudy/Casestudy.mjs";
-// import Footer from "./_components/_footer/Footer.mjs";
-
 import WebGL from "./_components/_webgl/WebGL.mjs";
+import Introduction from "./_components/_introduction/Introduction.mjs";
 
 /////////////////
 ///// CLASS /////
@@ -79,7 +74,7 @@ class Main extends HTMLElement
         (
           document.body,
           { backgroundColor: "rgb(255, 255, 255)"},
-          { backgroundColor: "rgb(255, 253, 249)", duration: .900, delay: 1.0, ease: "none" },
+          { backgroundColor: "rgb(241, 240, 224)", duration: .900, delay: 1.0, ease: "none" },
         );
       }.bind(this)
     );
@@ -145,8 +140,8 @@ class Main extends HTMLElement
     (
       [
         // TODO: check if we use all these
-        // function(fCB2) { load("font_0001_r", font_0001_r, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0002_r", font_0002_r, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_m", font_0001_m, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_mi", font_0001_mi, fCB2); }.bind(this),
         // function(fCB2) { load("font_0002_l", font_0002_l, fCB2); }.bind(this),
         // function(fCB2) { load("font_0003_li", font_0003_li, fCB2); }.bind(this),
         // function(fCB2) { load("font_0003_m", font_0003_m, fCB2); }.bind(this),
@@ -174,6 +169,7 @@ class Main extends HTMLElement
         // function(fCB) { this.components._casestudyGoogleEarthStudio = new Casestudy(fCB, "GoogleEarthStudio"); }.bind(this),
         // function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
         function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
+        function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
 
       ],
       function (err, results)
@@ -195,6 +191,7 @@ class Main extends HTMLElement
     // DOM.append(this.components._footer, this.domShadowRoot);
 
     DOM.append(this.components._webGL, this.domShadowRoot);
+    DOM.append(this.components._introduction, this.domShadowRoot);
 
     fCB();
   };

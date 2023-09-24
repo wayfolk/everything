@@ -1,0 +1,19 @@
+.column
+{
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.column #logomark
+{
+  width: 80px;
+}
+
+.column p
+{
+  margin: 0;
+  font-family: "font_0001_m";
+  font-size: 25px;
+  font-weight: 500;
+  font-style: italic;
+}

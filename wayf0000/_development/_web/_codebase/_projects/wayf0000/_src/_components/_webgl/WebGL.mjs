@@ -145,6 +145,25 @@ class WebGL extends HTMLElement
 
         window.addEventListener("resize", onWindoResize.bind(this));
 
+        const map = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
+
+        let onMouseMove = function(e) {
+
+          // map domelem width to a smaller range
+          const val = map(e.clientX, 0, this.domElement.clientWidth, -35, 35);
+
+          gsap.killTweensOf(this.entities.lights['pointLight'].position);
+          gsap.to
+          (
+            this.entities.lights['pointLight'].position,
+            { x: val, duration: 1.200, ease: "sine.Out" },
+          );
+          // this.entities.lights['pointLight'].position.x = val;
+
+        };
+
+        window.addEventListener("mousemove", onMouseMove.bind(this));
+
         console.log("_webGL: setEventHandlers: done");
 
         fCB();
@@ -528,11 +547,7 @@ class WebGL extends HTMLElement
   createAnimationLoop(fCB)
   {
 
-    gsap.fromTo
-    (
-      this.entities.lights['pointLight'].position,
-      { x: 25 }, { x: -25, duration: 10.000, ease: "sine.inOut", repeat: -1, yoyo: true },
-    );
+
 
     gsap.to
     (
@@ -565,7 +580,7 @@ class WebGL extends HTMLElement
 
 customElements.define
 (
-  'theu0000-components-webgl',
+  'wayf0000-components-webgl',
   WebGL,
 );
 
