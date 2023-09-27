@@ -27,6 +27,8 @@ import font_0001_mi from "./_assets/_fonts/Pitch-Medium.woff2";
 ///// COMPONENTS
 import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
+import Writing from "./_components/_writing/Writing.mjs";
+import Footer from "./_components/_footer/Footer.mjs";
 
 /////////////////
 ///// CLASS /////
@@ -73,8 +75,8 @@ class Main extends HTMLElement
         gsap.fromTo
         (
           document.body,
-          { backgroundColor: "rgb(255, 255, 255)"},
-          { backgroundColor: "rgb(241, 240, 224)", duration: .900, delay: 1.0, ease: "none" },
+          { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
+          { backgroundColor: "rgb(241, 240, 224)", duration: .900, delay: 0.0, ease: "none" },
         );
       }.bind(this)
     );
@@ -162,14 +164,10 @@ class Main extends HTMLElement
     parallel
     (
       [
-        // function(fCB) { this.components._header = new Header(fCB); }.bind(this),
-        // function(fCB) { this.components._acknowledgement = new Acknowledgement(fCB); }.bind(this),
-        // function(fCB) { this.components._curriculumvitae = new Curriculumvitae(fCB); }.bind(this),
-        // function(fCB) { this.components._casestudyGorillaz = new Casestudy(fCB, "Gorillaz"); }.bind(this),
-        // function(fCB) { this.components._casestudyGoogleEarthStudio = new Casestudy(fCB, "GoogleEarthStudio"); }.bind(this),
-        // function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
         function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
+        function(fCB) { this.components._writing = new Writing(fCB); }.bind(this),
+        function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
 
       ],
       function (err, results)
@@ -183,15 +181,10 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
-    // DOM.append(this.components._header, this.domShadowRoot);
-    // DOM.append(this.components._acknowledgement, this.domShadowRoot);
-    // DOM.append(this.components._curriculumvitae, this.domShadowRoot);
-    // DOM.append(this.components._casestudyGorillaz, this.domShadowRoot);
-    // DOM.append(this.components._casestudyGoogleEarthStudio, this.domShadowRoot);
-    // DOM.append(this.components._footer, this.domShadowRoot);
-
     DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
+    DOM.append(this.components._writing, this.domShadowRoot);
+    DOM.append(this.components._footer, this.domShadowRoot);
 
     fCB();
   };

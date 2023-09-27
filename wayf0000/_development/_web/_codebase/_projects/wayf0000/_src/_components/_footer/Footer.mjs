@@ -14,8 +14,8 @@ import { ENV } from "../../_utils/ENV.mjs";
 import { DOM } from "../../_utils/DOM.mjs";
 
 ///// JS ASSETS
-import sHTML from "./Introduction.html";
-import sCSS from "./Introduction.css";
+import sHTML from "./Footer.html";
+import sCSS from "./Footer.css";
 
 ///// CSS ASSETS
 // import imgHeaderImage from "./_assets/_images/header_background_3840x1491_q80.webp";
@@ -24,7 +24,7 @@ import sCSS from "./Introduction.css";
 ///// CLASS /////
 /////////////////
 
-class Introduction extends HTMLElement
+class Footer extends HTMLElement
 {
   bIntroAlreadyCalled = false;
   bIntroFinished = false;
@@ -34,7 +34,7 @@ class Introduction extends HTMLElement
   constructor(fOptionalCB)
   {
     super();
-    console.log("_introduction: constructor()");
+    console.log("_footer: constructor()");
 
     this.__init(fOptionalCB);
   };
@@ -54,7 +54,7 @@ class Introduction extends HTMLElement
       ],
       function (err, results)
       {
-        console.log("_introduction: __init: done");
+        console.log("_footer: __init: done");
 
         // const domEl = this.domShadowRoot.querySelectorAll("header .blend")[0];
         // console.log(domEl);
@@ -146,7 +146,7 @@ class Introduction extends HTMLElement
       ],
       function (err, results)
       {
-        console.log("_introduction: setEventHandlers: done");
+        console.log("_footer: setEventHandlers: done");
 
         fCB();
       }.bind(this)
@@ -244,15 +244,15 @@ class Introduction extends HTMLElement
 
 customElements.define
 (
-  'wayf0000-components-introduction',
-  Introduction,
+  'wayf0000-components-footer',
+  Footer,
 );
 
 //////////////////////
 ///// ES6 EXPORT /////
 //////////////////////
 
-export default Introduction;
+export default Footer;
 
 ////////////////////////////////////////////////////////////
 //////////////////////////.        /////////////////////////

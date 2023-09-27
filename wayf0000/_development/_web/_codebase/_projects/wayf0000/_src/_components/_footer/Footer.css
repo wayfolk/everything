@@ -10,13 +10,7 @@
   max-width: 960px;
 }
 
-.column #logomark
-{
-  margin: 0 0 110px 0;
-  width: 75px;
-}
-
-.column p
+/* .column p
 {
   margin: 0 0 200px 0;
   width: 600px;
@@ -25,4 +19,10 @@
   font-weight: 500;
   font-style: italic;
   line-height: 40px;
+} */
+
+.column #map
+{
+  /* margin: 0 0 110px 0; */
+  width: 250px;
 }
