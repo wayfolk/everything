@@ -219,6 +219,9 @@ class HttpsServer extends Server
    */
   requestHandlerGET = function(req, res)
   {
+
+    console.log("request hit");
+    
     /**
      * We need to cork for efficiency.
      * See {@link https://github.com/uNetworking/uWebSockets/blob/master/misc/READMORE.md#corking}
