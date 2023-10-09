@@ -19,6 +19,7 @@ jobs:
           # TODO: don't kill the pm2 daemon. reload the running one instead.
           script: |
             cd ~/_git/something/
+            ls -la
             git pull
             npm run pm2-kill
             npm install
