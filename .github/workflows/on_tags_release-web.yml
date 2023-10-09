@@ -21,7 +21,7 @@ jobs:
         # see: https://stackoverflow.com/questions/2871181/replacing-some-characters-in-a-string-with-another-character
         # see: https://stackoverflow.com/questions/12695474/how-to-access-environment-variables-in-an-expect-script
         run: |
-          export WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED="${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}" | tr $ \\\$
-          expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
+          export WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED="${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}" | tr $ \\\$ && \
+            expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
             "whoami"; \
             expect "assword:"; send "$::env(WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED)\r";'
