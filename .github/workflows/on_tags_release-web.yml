@@ -20,7 +20,7 @@ jobs:
         # see: https://stackoverflow.com/questions/24373449/escape-in-expect-script
         # see: https://stackoverflow.com/questions/2871181/replacing-some-characters-in-a-string-with-another-character
         run: |
-          var WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED=${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }} | tr $ \\\$
+          var WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED="${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}" | tr $ \\\$
           expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
             "whoami"; \
             expect "assword:"; send "$WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED\r";'
