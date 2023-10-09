@@ -7,7 +7,8 @@
   "devDependencies":
   {
     "npm-check-updates": "16.14.5",
-    "concurrently": "8.2.1"
+    "concurrently": "8.2.1",
+    "pm2": "5.3.0"
   },
   "scripts":
   {
@@ -69,7 +70,15 @@
     "engine-dev": "concurrently -p \"{name}:\" -n \"server_start,engine-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:common-development-web-engine-build-watch\"",
 
     "runtime-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-runtimes-node-chromium-install\"",
-    "runtime-dev": "concurrently -p \"{name}:\" -n \"node-chromium-dev\" -c \"dim\" \"npm:common-development-runtimes-node-chromium-dev\""
+    "runtime-dev": "concurrently -p \"{name}:\" -n \"node-chromium-dev\" -c \"dim\" \"npm:common-development-runtimes-node-chromium-dev\"",
+
+    "pm2-server-start": "cd ./common/_development/_web/_server/ && $INIT_CWD/node_modules/.bin/pm2 start Server.mjs --name common-development-web-server --max-memory-restart 512M",
+    "pm2-server-stop": "./node_modules/.bin/pm2 stop common-development-web-server",
+    "pm2-server-reload": "./node_modules/.bin/pm2 reload common-development-web-server",
+    "pm2-server-delete": "./node_modules/.bin/pm2 delete common-development-web-server",
+    "pm2-list": "./node_modules/.bin/pm2 list",
+    "pm2-logs": "./node_modules/.bin/pm2 logs",
+    "pm2-kill": "./node_modules/.bin/pm2 kill"
   },
   "os":
   [
