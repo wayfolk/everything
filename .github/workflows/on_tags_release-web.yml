@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: provision runner
         run: sudo apt-get install -y expect
+      - name: add github hosts to known_host
+        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: executing remote ssh commands using password
         run: |
           expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
