@@ -47,11 +47,11 @@ class Server
   {
     if(sRequestHost === "_local.wayfolk.com" || sRequestHost === "www.wayfolk.com" || sRequestHost === "wayfolk.com")
     {
-      return "wayfolk.com";
+      return "www.wayfolk.com";
     }
     else if (sRequestHost === "_local.theundebruijn.com" || sRequestHost === "www.theundebruijn.com" || sRequestHost === "theundebruijn.com")
     {
-      return "theundebruijn.com";
+      return "www.theundebruijn.com";
     }
     else if (sRequestHost === "_local_engine.wayfolk.com")
     {
@@ -192,12 +192,36 @@ class HttpsServer extends Server
   {
     this._uWSServer.get("/*", function(res, req)
       {
+        // redirect non-www.
+        if (req.getHeader("host") === "wayfolk.com")
+        {
+          const sRedirectURL = "https://www.wayfolk.com" + path.normalize(req.getUrl());
+
+          res.writeStatus("301 Moved Permanently");
+          res.writeHeader("Location", sRedirectURL);
+          res.end();
+
+          return;
+        };
+        
         this.requestHandlerGET(req, res);
       }.bind(this)
     );
 
     this._uWSServer.domain("*.theundebruijn.com").get("/*", function(res, req)
       {
+        // redirect non-www.
+        if (req.getHeader("host") === "theundebruijn.com")
+        {
+          const sRedirectURL = "https://www.theundebruijn.com" + path.normalize(req.getUrl());
+
+          res.writeStatus("301 Moved Permanently");
+          res.writeHeader("Location", sRedirectURL);
+          res.end();
+
+          return;
+        };
+
         this.requestHandlerGET(req, res);
       }.bind(this)
     );
@@ -320,11 +344,11 @@ class HttpsServer extends Server
    */
   determineProjectBuildPath = function(sParsedRequestHost)
   {
-    if (sParsedRequestHost === "wayfolk.com")
+    if (sParsedRequestHost === "www.wayfolk.com")
     {
       return "../../../../wayf0000/_development/_web/_codebase/_projects/wayf0000/_build";
     }
-    else if (sParsedRequestHost === "theundebruijn.com")
+    else if (sParsedRequestHost === "www.theundebruijn.com")
     {
       return "../../../../wayf0000/_development/_web/_codebase/_projects/theu0000/_build";
     }
