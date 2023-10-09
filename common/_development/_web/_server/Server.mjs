@@ -218,10 +218,7 @@ class HttpsServer extends Server
    * @param {object} res uWebSockets.js HttpResponse
    */
   requestHandlerGET = function(req, res)
-  {
-
-    console.log("request hit");
-    
+  {    
     /**
      * We need to cork for efficiency.
      * See {@link https://github.com/uNetworking/uWebSockets/blob/master/misc/READMORE.md#corking}
