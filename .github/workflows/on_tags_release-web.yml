@@ -15,7 +15,9 @@ jobs:
           host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }}
           username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}
           password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
-          script: whoami
+          script: |
+            whoami
+            ls -al
       # - name: provision runner
         # run: sudo apt-get install -y expect
       # - name: add hosts to known_hosts
