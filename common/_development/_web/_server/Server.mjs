@@ -129,7 +129,7 @@ class HttpsServer extends Server
     (
       [
         function(fCB) { this.createUWSServer(fCB); }.bind(this),
-        // function(fCB) { this.createSNIHandlers(fCB); }.bind(this),
+        function(fCB) { this.createSNIHandlers(fCB); }.bind(this),
         function(fCB) { this.createRequestHandlers(fCB); }.bind(this),
         function(fCB) { this.startServer(fCB); }.bind(this),
       ],
@@ -158,15 +158,16 @@ class HttpsServer extends Server
         key_file_name: "./_certs/wildcard_wayfolk_com.key",
         cert_file_name: "./_certs/wildcard_wayfolk_com_certificate_chain.crt",
       },
-    ).missingServerName(function() {
-      this._uWSServer.addServerName
-      (
-        "theundebruijn.com", {
-          key_file_name: "./_certs/wildcard_theundebruijn_com.key",
-          cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
-        }
-      );
-    }.bind(this));
+    )
+    // .missingServerName(function() {
+    //   this._uWSServer.addServerName
+    //   (
+    //     "*.theundebruijn.com", {
+    //       key_file_name: "./_certs/wildcard_theundebruijn_com.key",
+    //       cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
+    //     }
+    //     );
+    // }.bind(this));
 
     fCB();
   };
@@ -176,19 +177,28 @@ class HttpsServer extends Server
    * See {@link createUWSServer} for the 'base' domain we use.
    * @param {function} fCB control flow callback.
    */
-  // createSNIHandlers(fCB)
-  // {
-  //   this._uWSServer.addServerName
-  //   (
-  //     "*.theundebruijn.com",
-  //     {
-  //       key_file_name: "./_certs/wildcard_theundebruijn_com.key",
-  //       cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
-  //     },
-  //   );
+  createSNIHandlers(fCB)
+  {
+    this._uWSServer.addServerName
+    (
+      "www.theundebruijn.com",
+      {
+        key_file_name: "./_certs/wildcard_theundebruijn_com.key",
+        cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
+      },
+    );
 
-  //   fCB();
-  // };
+    this._uWSServer.addServerName
+    (
+      "theundebruijn.com",
+      {
+        key_file_name: "./_certs/wildcard_theundebruijn_com.key",
+        cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
+      },
+    );
+
+    fCB();
+  };
 
   /**
    * Creates handlers for incoming requests.
@@ -216,21 +226,20 @@ class HttpsServer extends Server
       }.bind(this)
     );
 
-    this._uWSServer.domain("*.theundebruijn.com").get("/*", function(res, req)
+    this._uWSServer.domain("www.theundebruijn.com").get("/*", function(res, req)
       {
-        // redirect non-www.
-        if (req.getHeader("host") === "theundebruijn.com")
-        {
-          const sRedirectURL = "https://www.theundebruijn.com" + path.normalize(req.getUrl());
-
-          res.writeStatus("301 Moved Permanently");
-          res.writeHeader("Location", sRedirectURL);
-          res.end();
-
-          return;
-        };
-
         this.requestHandlerGET(req, res);
+      }.bind(this)
+    );
+
+    this._uWSServer.domain("theundebruijn.com").get("/*", function(res, req)
+      {
+        const sRedirectURL = "https://www.theundebruijn.com" + path.normalize(req.getUrl());
+
+        res.writeStatus("301 Moved Permanently");
+        res.writeHeader("Location", sRedirectURL);
+        res.end();
+
       }.bind(this)
     );
 
