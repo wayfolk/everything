@@ -208,7 +208,7 @@ class HttpsServer extends Server
       }.bind(this)
     );
 
-    this._uWSServer.domain("*.theundebruijn.com").get("/*", function(res, req)
+    this._uWSServer.domain("theundebruijn.com").get("/*", function(res, req)
       {
         // redirect non-www.
         if (req.getHeader("host") === "theundebruijn.com")
