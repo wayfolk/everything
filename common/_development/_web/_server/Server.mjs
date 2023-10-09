@@ -158,16 +158,7 @@ class HttpsServer extends Server
         key_file_name: "./_certs/wildcard_wayfolk_com.key",
         cert_file_name: "./_certs/wildcard_wayfolk_com_certificate_chain.crt",
       },
-    )
-    // .missingServerName(function() {
-    //   this._uWSServer.addServerName
-    //   (
-    //     "*.theundebruijn.com", {
-    //       key_file_name: "./_certs/wildcard_theundebruijn_com.key",
-    //       cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
-    //     }
-    //     );
-    // }.bind(this));
+    );
 
     fCB();
   };
