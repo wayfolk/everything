@@ -31,7 +31,7 @@ import sHTML from './WebGL.html';
 import sCSS from './WebGL.css';
 
 /// WEBGL ASSETS
-import sample_draco from './_assets/the-man-in-the-wall_LOD0.glb';
+import sample_draco from './_assets/the-man-in-the-wall_LOD1.glb';
 
 /////////////////
 ///// CLASS /////
@@ -381,20 +381,20 @@ class WebGL extends HTMLElement
     this.entities.helpers['pointLightHelper'].visible = false;
     this.scene.add(this.entities.helpers['pointLightHelper']);
 
-    // if (!this.env.bIsMobile && this.env.nGPUTier > 1) {
-      const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
-      const mirror = new Reflector(mirrorGeometry, {
-        clipBias: 0.000001,
-        textureWidth: 2048,
-        textureHeight: 2048,
-        color: new THREE.Color(0xcccccc),
-      });
-      mirror.position.y = -0.01;
-      mirror.position.z = 0;
-      mirror.rotation.x =  Math.PI / 2;
-      // mirror.rotateX((2 * Math.PI * (100 /360)));
-      this.scene.add(mirror);
-    // };
+    // // if (!this.env.bIsMobile && this.env.nGPUTier > 1) {
+    //   const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
+    //   const mirror = new Reflector(mirrorGeometry, {
+    //     clipBias: 0.000001,
+    //     textureWidth: 2048,
+    //     textureHeight: 2048,
+    //     color: new THREE.Color(0xcccccc),
+    //   });
+    //   mirror.position.y = -0.01;
+    //   mirror.position.z = 0;
+    //   mirror.rotation.x =  Math.PI / 2;
+    //   // mirror.rotateX((2 * Math.PI * (100 /360)));
+    //   this.scene.add(mirror);
+    // // };
 
     fCB();
   };

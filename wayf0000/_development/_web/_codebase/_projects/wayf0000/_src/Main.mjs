@@ -27,7 +27,7 @@ import font_0001_mi from "./_assets/_fonts/Pitch-Medium.woff2";
 ///// COMPONENTS
 import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
-import Writing from "./_components/_writing/Writing.mjs";
+import Words from "./_components/_words/Words.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
 
 /////////////////
@@ -166,7 +166,7 @@ class Main extends HTMLElement
       [
         function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
-        function(fCB) { this.components._writing = new Writing(fCB); }.bind(this),
+        function(fCB) { this.components._words = new Words(fCB); }.bind(this),
         function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
 
       ],
@@ -183,7 +183,7 @@ class Main extends HTMLElement
   {
     DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
-    DOM.append(this.components._writing, this.domShadowRoot);
+    DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);
 
     fCB();

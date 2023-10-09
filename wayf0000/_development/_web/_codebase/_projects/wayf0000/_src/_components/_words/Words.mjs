@@ -14,8 +14,8 @@ import { ENV } from "../../_utils/ENV.mjs";
 import { DOM } from "../../_utils/DOM.mjs";
 
 ///// JS ASSETS
-import sHTML from "./Writing.html";
-import sCSS from "./Writing.css";
+import sHTML from "./Words.html";
+import sCSS from "./Words.css";
 
 ///// CSS ASSETS
 // import imgHeaderImage from "./_assets/_images/header_background_3840x1491_q80.webp";
@@ -24,7 +24,7 @@ import sCSS from "./Writing.css";
 ///// CLASS /////
 /////////////////
 
-class Writing extends HTMLElement
+class Words extends HTMLElement
 {
   bIntroAlreadyCalled = false;
   bIntroFinished = false;
@@ -34,7 +34,7 @@ class Writing extends HTMLElement
   constructor(fOptionalCB)
   {
     super();
-    console.log("_writing: constructor()");
+    console.log("_words: constructor()");
 
     this.__init(fOptionalCB);
   };
@@ -54,7 +54,7 @@ class Writing extends HTMLElement
       ],
       function (err, results)
       {
-        console.log("_writing: __init: done");
+        console.log("_words: __init: done");
 
         // const domEl = this.domShadowRoot.querySelectorAll("header .blend")[0];
         // console.log(domEl);
@@ -146,7 +146,7 @@ class Writing extends HTMLElement
       ],
       function (err, results)
       {
-        console.log("_writing: setEventHandlers: done");
+        console.log("_words: setEventHandlers: done");
 
         fCB();
       }.bind(this)
@@ -244,15 +244,15 @@ class Writing extends HTMLElement
 
 customElements.define
 (
-  'wayf0000-components-writing',
-  Writing,
+  'wayf0000-components-words',
+  Words,
 );
 
 //////////////////////
 ///// ES6 EXPORT /////
 //////////////////////
 
-export default Writing;
+export default Words;
 
 ////////////////////////////////////////////////////////////
 //////////////////////////.        /////////////////////////

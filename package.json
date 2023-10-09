@@ -6,39 +6,35 @@
   },
   "devDependencies":
   {
-    "npm-check-updates": "16.14.4",
+    "npm-check-updates": "16.14.5",
     "concurrently": "8.2.1"
   },
   "scripts":
   {
-    "common-development-web-builder_install": "cd ./common/_development/_web/_builder/ && npm install",
-    "common-development-web-builder_update": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu",
-    "common-development-web-builder_upgrade": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu --upgrade && npm install",
-    "common-development-web-builder_clean": "cd ./common/_development/_web/_builder/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-web-builder-install": "cd ./common/_development/_web/_builder/ && npm install",
+    "common-development-web-builder-update": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu",
+    "common-development-web-builder-upgrade": "cd ./common/_development/_web/_builder/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-builder-clean": "cd ./common/_development/_web/_builder/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
 
+    "common-development-web-server-install": "cd ./common/_development/_web/_server/ && npm install",
+    "common-development-web-server-update": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu",
+    "common-development-web-server-upgrade": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-server-clean": "cd ./common/_development/_web/_server/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-web-server-start": "cd ./common/_development/_web/_server/ && node Server.mjs",
 
-    "common-development-web-server_install": "cd ./common/_development/_web/_server/ && npm install",
-    "common-development-web-server_update": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu",
-    "common-development-web-server_upgrade": "cd ./common/_development/_web/_server/ && ./node_modules/.bin/ncu --upgrade && npm install",
-    "common-development-web-server_clean": "cd ./common/_development/_web/_server/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
-    "common-development-web-server_start": "cd ./common/_development/_web/_server/ && node Server.mjs",
+    "common-development-web-engine-install": "cd ./common/_development/_web/_engine/ && npm install",
+    "common-development-web-engine-update": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu",
+    "common-development-web-engine-upgrade": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-web-engine-clean": "cd ./common/_development/_web/_engine/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-web-engine-build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/",
+    "common-development-web-engine-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/ --watch",
 
-
-    "common-development-web-engine_install": "cd ./common/_development/_web/_engine/ && npm install",
-    "common-development-web-engine_update": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu",
-    "common-development-web-engine_upgrade": "cd ./common/_development/_web/_engine/ && ./node_modules/.bin/ncu --upgrade && npm install",
-    "common-development-web-engine_clean": "cd ./common/_development/_web/_engine/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
-    "common-development-web-engine_build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/",
-    "common-development-web-engine_build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/common/_development/_web/_engine/ --watch",
-
-
-    "common-development-runtimes-node-chromium_install": "cd ./common/_development/_runtimes/_node-chromium/ && npm install",
-    "common-development-runtimes-node-chromium_update": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu",
-    "common-development-runtimes-node-chromium_upgrade": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu --upgrade && npm install",
-    "common-development-runtimes-node-chromium_clean": "cd ./common/_development/_runtimes/_node-chromium/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
-    "common-development-runtimes-node-chromium_dev": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/dev.mjs",
-    "common-development-runtimes-node-chromium_build": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/build.mjs",
-
+    "common-development-runtimes-node-chromium-install": "cd ./common/_development/_runtimes/_node-chromium/ && npm install",
+    "common-development-runtimes-node-chromium-update": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu",
+    "common-development-runtimes-node-chromium-upgrade": "cd ./common/_development/_runtimes/_node-chromium/ && ./node_modules/.bin/ncu --upgrade && npm install",
+    "common-development-runtimes-node-chromium-clean": "cd ./common/_development/_runtimes/_node-chromium/ && rm -rf ./node_modules/ && rm -f ./package-lock.json",
+    "common-development-runtimes-node-chromium-dev": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/dev.mjs",
+    "common-development-runtimes-node-chromium-build": "cd ./common/_development/_runtimes/_node-chromium/ && node ./_electron/build.mjs",
 
     "projects-wayf0000-install": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && npm install",
     "projects-wayf0000-update": "cd ./wayf0000/_development/_web/_codebase/_projects/wayf0000/ && ./node_modules/.bin/ncu",
@@ -47,7 +43,6 @@
     "projects-wayf0000-build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/wayf0000/",
     "projects-wayf0000-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/wayf0000/ --watch",
 
-
     "projects-theu0000-install": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && npm install",
     "projects-theu0000-update": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && ./node_modules/.bin/ncu",
     "projects-theu0000-upgrade": "cd ./wayf0000/_development/_web/_codebase/_projects/theu0000/ && ./node_modules/.bin/ncu --upgrade && npm install",
@@ -55,26 +50,26 @@
     "projects-theu0000-build": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/theu0000/",
     "projects-theu0000-build-watch": "cd ./common/_development/_web/_builder/ && node Builder.mjs --project $INIT_CWD/wayf0000/_development/_web/_codebase/_projects/theu0000/ --watch",
 
-
-    "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-wayf0000-install\"",
-    "wayf0000-dev": "concurrently -p \"{name}:\" -n \"server_start,wayf0000-build-watch\" -c \"dim\" \"npm:common-development-web-server_start\" \"npm:projects-wayf0000-build-watch\"",
-
-
-    "theu000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:projects-wayf0000-install\"",
-    "theu000-dev": "concurrently -p \"{name}:\" -n \"server_start,theu0000-build-watch\" -c \"dim\" \"npm:common-development-web-server_start\" \"npm:projects-theu0000-build-watch\"",
-
-
-    "engine-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder_install\" \"npm:common-development-web-server_install\" \"npm:common-development-web-engine_install\"",
-    "engine-dev": "concurrently -p \"{name}:\" -n \"server_start,engine_build-watch\" -c \"dim\" \"npm:common-development-web-server_start\" \"npm:common-development-web-engine_build-watch\"",
-
-
-    "runtime-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-runtimes-node-chromium_install\"",
-    "runtime-dev": "concurrently -p \"{name}:\" -n \"node-chromium_dev\" -c \"dim\" \"npm:common-development-runtimes-node-chromium_dev\"",
-
-
     "update": "./node_modules/.bin/ncu",
-    "upgrade": "npm install",
-    "clean": "rm -rf ./node_modules/ && rm -f ./package-lock.json"
+    "upgrade": "./node_modules/.bin/ncu --upgrade && npm install",
+    "clean": "rm -rf ./node_modules/ && rm -f ./package-lock.json",
+
+    "install-all": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:common-development-web-engine-install\" \"npm:common-development-runtimes-node-chromium-install\" \"npm:projects-wayf0000-install\" \"npm:projects-theu0000-install\" \"npm install\"",
+    "update-all": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-update\" \"npm:common-development-web-server-update\" \"npm:common-development-web-engine-update\" \"npm:common-development-runtimes-node-chromium-update\" \"npm:projects-wayf0000-update\" \"npm:projects-theu0000-update\" \"npm:update\"",
+    "upgrade-all": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-upgrade\" \"npm:common-development-web-server-upgrade\" \"npm:common-development-web-engine-upgrade\" \"npm:common-development-runtimes-node-chromium-upgrade\" \"npm:projects-wayf0000-upgrade\" \"npm:projects-theu0000-upgrade\" \"npm:upgrade\"",
+    "clean-all": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-clean\" \"npm:common-development-web-server-clean\" \"npm:common-development-web-engine-clean\" \"npm:common-development-runtimes-node-chromium-clean\" \"npm:projects-wayf0000-clean\" \"npm:projects-theu0000-clean\" \"npm:clean\"",
+
+    "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:projects-wayf0000-install\"",
+    "wayf0000-dev": "concurrently -p \"{name}:\" -n \"server_start,wayf0000-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:projects-wayf0000-build-watch\"",
+
+    "theu000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:projects-wayf0000-install\"",
+    "theu000-dev": "concurrently -p \"{name}:\" -n \"server_start,theu0000-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:projects-theu0000-build-watch\"",
+
+    "engine-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:common-development-web-engine-install\"",
+    "engine-dev": "concurrently -p \"{name}:\" -n \"server_start,engine-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:common-development-web-engine-build-watch\"",
+
+    "runtime-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-runtimes-node-chromium-install\"",
+    "runtime-dev": "concurrently -p \"{name}:\" -n \"node-chromium-dev\" -c \"dim\" \"npm:common-development-runtimes-node-chromium-dev\""
   },
   "os":
   [
