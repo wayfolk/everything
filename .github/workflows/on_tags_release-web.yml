@@ -15,22 +15,14 @@ jobs:
           host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }}
           username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}
           password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
+          # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
+          # TODO: don't kill the pm2 daemon. reload the running one instead.
           script: |
-            whoami
-            ls -al
-      # - name: provision runner
-        # run: sudo apt-get install -y expect
-      # - name: add hosts to known_hosts
-        # run: |
-          # mkdir ~/.ssh/ && touch ~/.ssh/known_hosts && \
-            # ssh-keyscan ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} >> ~/.ssh/known_hosts
-      # - name: executing remote ssh commands using password
-        # make sure to escape the "$" if present in the password.
-        # see: https://stackoverflow.com/questions/24373449/escape-in-expect-script
-        # see: https://stackoverflow.com/questions/2871181/replacing-some-characters-in-a-string-with-another-character
-        # see: https://stackoverflow.com/questions/12695474/how-to-access-environment-variables-in-an-expect-script
-        # run: |
-          # export WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED='${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}' | tr $ \\\$ && \
-            # expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
-            # "whoami"; \
-            # expect "assword:"; send "$::env(WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED)\r";'
+            cd ~/_git/something/
+            git pull
+            npm run pm2-kill
+            npm install
+            npm run install-all
+            npm run projects-wayf0000-build
+            npm run projects-theu0000-build
+            npm run pm2-server-start
