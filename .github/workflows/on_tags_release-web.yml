@@ -9,19 +9,26 @@ jobs:
     name: deploy on tags release-web
     runs-on: ubuntu-latest
     steps:
-      - name: provision runner
-        run: sudo apt-get install -y expect
-      - name: add hosts to known_hosts
-        run: |
-          mkdir ~/.ssh/ && touch ~/.ssh/known_hosts && \
-            ssh-keyscan ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} >> ~/.ssh/known_hosts
       - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }}
+          username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}
+          password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
+          script: whoami
+      # - name: provision runner
+        # run: sudo apt-get install -y expect
+      # - name: add hosts to known_hosts
+        # run: |
+          # mkdir ~/.ssh/ && touch ~/.ssh/known_hosts && \
+            # ssh-keyscan ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} >> ~/.ssh/known_hosts
+      # - name: executing remote ssh commands using password
         # make sure to escape the "$" if present in the password.
         # see: https://stackoverflow.com/questions/24373449/escape-in-expect-script
         # see: https://stackoverflow.com/questions/2871181/replacing-some-characters-in-a-string-with-another-character
         # see: https://stackoverflow.com/questions/12695474/how-to-access-environment-variables-in-an-expect-script
-        run: |
-          export WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED="${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}" | tr $ \\\$ && \
-            expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
-            "whoami"; \
-            expect "assword:"; send "$::env(WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED)\r";'
+        # run: |
+          # export WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED='${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}' | tr $ \\\$ && \
+            # expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
+            # "whoami"; \
+            # expect "assword:"; send "$::env(WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD_ESCAPED)\r";'
