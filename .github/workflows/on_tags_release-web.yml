@@ -9,6 +9,8 @@ jobs:
     name: deploy on tags release-web
     runs-on: ubuntu-latest
     steps:
+      - name: provision runner
+        run: sudo apt-get install -y expect
       - name: executing remote ssh commands using password
         run: |
           expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
