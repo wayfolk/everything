@@ -1,0 +1,16 @@
+name: on tags release-web
+on:
+  push:
+    tags:
+      - release-web
+
+jobs:
+  deploy:
+    name: deploy on tags release-web
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        run: |
+          expect -c 'spawn ssh ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}@${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }} \
+            "whoami"; \
+            expect "assword:"; send "${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}\r";'
