@@ -12,9 +12,9 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }}
-          username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}
-          password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
+          host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_HOST }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_HOST }}
+          username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_USER }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_USER }}
+          password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_PASSWD }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_PASSWD }}
           # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
           # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
           # TODO: don't kill the pm2 daemon. reload the running one instead.
