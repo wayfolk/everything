@@ -3,18 +3,57 @@ on:
   push:
     tags:
       - release-web
-
 jobs:
   deploy:
     name: deploy on tags release-web
     runs-on: ubuntu-latest
     steps:
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh commands for WAYF0000_LINODE_APSOUTH_0001
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_HOST }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_HOST }}
-          username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_USER }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_USER }}
-          password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }},${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_PASSWD }},${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_PASSWD }}
+          host: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_HOST }}
+          username: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_USER }}
+          password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
+          # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
+          # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
+          # TODO: don't kill the pm2 daemon. reload the running one instead.
+          script: |
+            source ~/.bash_profile
+            cd ~/_git/something/
+            ls -la
+            git pull
+            npm run pm2-kill
+            npm install
+            npm run install-all
+            npm run projects-wayf0000-build
+            npm run projects-theu0000-build
+            npm run pm2-server-start
+      - name: executing remote ssh commands for WAYF0000_LINODE_USWEST_000
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_HOST }}
+          username: ${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_USER }}
+          password: ${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_PASSWD }}
+          # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
+          # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
+          # TODO: don't kill the pm2 daemon. reload the running one instead.
+          script: |
+            source ~/.bash_profile
+            cd ~/_git/something/
+            ls -la
+            git pull
+            npm run pm2-kill
+            npm install
+            npm run install-all
+            npm run projects-wayf0000-build
+            npm run projects-theu0000-build
+            npm run pm2-server-start
+      - name: executing remote ssh commands for WAYF0000_LINODE_EUCENTRAL_0001
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_HOST }}
+          username: ${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_USER }}
+          password: ${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_PASSWD }}
           # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
           # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
           # TODO: don't kill the pm2 daemon. reload the running one instead.
