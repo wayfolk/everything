@@ -16,18 +16,16 @@ jobs:
           password: ${{ secrets.WAYF0000_LINODE_APSOUTH_0001_SSH_PASSWD }}
           # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
           # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
-          # TODO: don't kill the pm2 daemon. reload the running one instead.
+          # TODO: handle elegant rebuilds. it this setup we serve broken artifacts between project build(s) and server reload.
           script: |
             source ~/.bash_profile
             cd ~/_git/something/
-            ls -la
             git pull
-            npm run pm2-kill
             npm install
             npm run install-all
             npm run projects-wayf0000-build
             npm run projects-theu0000-build
-            npm run pm2-server-start
+            npm run pm2-server-reload
       - name: executing remote ssh commands for WAYF0000_LINODE_USWEST_000
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -36,18 +34,16 @@ jobs:
           password: ${{ secrets.WAYF0000_LINODE_USWEST_0001_SSH_PASSWD }}
           # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
           # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
-          # TODO: don't kill the pm2 daemon. reload the running one instead.
+          # TODO: handle elegant rebuilds. it this setup we serve broken artifacts between project build(s) and server reload.
           script: |
             source ~/.bash_profile
             cd ~/_git/something/
-            ls -la
             git pull
-            npm run pm2-kill
             npm install
             npm run install-all
             npm run projects-wayf0000-build
             npm run projects-theu0000-build
-            npm run pm2-server-start
+            npm run pm2-server-reload
       - name: executing remote ssh commands for WAYF0000_LINODE_EUCENTRAL_0001
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -56,15 +52,13 @@ jobs:
           password: ${{ secrets.WAYF0000_LINODE_EUCENTRAL_0001_SSH_PASSWD }}
           # NOTE: ssh commands run in a non-interactive shell. this means we need to specifically source our .bash_profile.
           # TODO: don't assume we're pulling the latest from main. checkout specific release-web tag instead.
-          # TODO: don't kill the pm2 daemon. reload the running one instead.
+          # TODO: handle elegant rebuilds. it this setup we serve broken artifacts between project build(s) and server reload.
           script: |
             source ~/.bash_profile
             cd ~/_git/something/
-            ls -la
             git pull
-            npm run pm2-kill
             npm install
             npm run install-all
             npm run projects-wayf0000-build
             npm run projects-theu0000-build
-            npm run pm2-server-start
+            npm run pm2-server-reload
