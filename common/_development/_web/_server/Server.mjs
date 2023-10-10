@@ -262,9 +262,17 @@ class HttpsServer extends Server
       {
         res.writeStatus("400 Bad Request");
         res.end();
+        return;
       };
 
       const sProjectBuildPath = this.determineProjectBuildPath(sParsedRequestHost);
+      if (sProjectBuildPath === null)
+      {
+        res.writeStatus("400 Bad Request");
+        res.end(); 
+        return;
+      }
+
       const sNormalizedRequestURL = path.normalize(req.getUrl());
 
       let sFileExt = Object.create(null);
