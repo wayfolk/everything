@@ -1,8 +1,10 @@
 name: on tags release-web
 on:
-  push:
-    tags:
-      - release-web
+  workflow_dispatch 
+# on:
+  # push:
+    # tags:
+      # - release-web
 jobs:
   deploy:
     name: deploy on tags release-web
