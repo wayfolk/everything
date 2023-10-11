@@ -52,8 +52,7 @@
 .column h1
 {
   font-family: "font_0001_b";
-  font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -78,8 +77,7 @@
 .column h2
 {
   font-family: "font_0001_bi";
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 500;
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -107,7 +105,6 @@
   width: 600px;
   font-family: "font_0001_m";
   font-size: 27px;
-  font-style: normal;
   font-weight: 400;
   line-height: 50px;
 }
@@ -136,6 +133,5 @@
 
 .column p .emphasis {
   font-family: "font_0001_mi";
-  font-style: italic;
-  font-weight: 400;
+
 }
