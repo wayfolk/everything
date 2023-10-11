@@ -9,15 +9,133 @@
   margin: 0 auto;
   max-width: 960px;
 }
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  .column
+  {
+    max-width: 800px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  .column
+  {
+    max-width: 320px;
+  }
+}
+
+.column .emoji
+{
+  font-size: 27px;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  .column .emoji
+  {
+    padding: 0 50px 0 50px;
+    max-width: 500px;
+  }
+}
+@media (max-width: 575.98px)
+{
+ .column .emoji
+ {
+  padding: 0 20px 0 20px;
+  width: 280px;
+  font-size: 25px;
+  line-height: 35px;
+ }
+}
+
+.column h1
+{
+  font-family: "font_0001_b";
+  font-style: normal;
+  font-weight: 700;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  .column h1
+  {
+    padding: 0 50px 0 50px;
+    max-width: 500px;
+  }
+}
+@media (max-width: 575.98px)
+{
+ .column h1
+ {
+  padding: 0 20px 0 20px;
+  width: 280px;
+  font-size: 25px;
+  line-height: 35px;
+ }
+}
+
+.column h2
+{
+  font-family: "font_0001_bi";
+  font-style: italic;
+  font-weight: 700;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  .column h2
+  {
+    padding: 0 50px 0 50px;
+    max-width: 500px;
+  }
+}
+@media (max-width: 575.98px)
+{
+ .column h2
+ {
+  padding: 0 20px 0 20px;
+  width: 280px;
+  font-size: 22px;
+  line-height: 35px;
+ }
+}
 
 .column p
 {
-  margin: 0 0 200px 0;
+  margin: 0 0 50px 0;
   width: 600px;
-  /* font-family: "font_0001_m"; */
-  font-family: "Georgia";
-  font-size: 25px;
-  /* font-weight: 500; */
+  font-family: "font_0001_m";
+  font-size: 27px;
   font-style: normal;
+  font-weight: 400;
   line-height: 50px;
+}
+@media (max-width: 1399.98px) {}
+@media (max-width: 1199.98px)
+{
+  .column p
+  {
+    clear: left;
+    top: 0;
+    margin: 0;
+    padding: 0 50px 0 50px;
+    max-width: 500px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  .column p
+  {
+    padding: 0 20px 0 20px;
+    width: 280px;
+    font-size: 20px;
+    line-height: 35px;
+  }
+}
+
+.column p .emphasis {
+  font-family: "font_0001_mi";
+  font-style: italic;
+  font-weight: 400;
 }

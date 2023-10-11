@@ -15,17 +15,13 @@ import sHTML from "./Main.html";
 import sCSS from "./Main.css";
 
 ///// CSS ASSETS
-import font_0001_m from "./_assets/_fonts/Pitch-Medium.woff2";
-import font_0001_mi from "./_assets/_fonts/Pitch-Medium.woff2";
-// import font_0002_l from "./_assets/_fonts/font_0002_l.woff2";
-// import font_0003_li from "./_assets/_fonts/font_0003_li.woff2";
-// import font_0003_m from "./_assets/_fonts/font_0003_m.woff2";
-// import font_0003_i from "./_assets/_fonts/font_0003_i.woff2";
-// import font_0003_el from "./_assets/_fonts/font_0003_el.woff2";
-// import font_0003_eli from "./_assets/_fonts/font_0003_eli.woff2";
+import font_0001_m from "./_assets/_fonts/font_0001_m.woff2";
+import font_0001_mi from "./_assets/_fonts/font_0001_mi.woff2";
+import font_0001_b from "./_assets/_fonts/font_0001_b.woff2";
+import font_0001_bi from "./_assets/_fonts/font_0001_bi.woff2";
 
 ///// COMPONENTS
-import WebGL from "./_components/_webgl/WebGL.mjs";
+// import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
 import Words from "./_components/_words/Words.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
@@ -144,12 +140,8 @@ class Main extends HTMLElement
         // TODO: check if we use all these
         function(fCB2) { load("font_0001_m", font_0001_m, fCB2); }.bind(this),
         function(fCB2) { load("font_0001_mi", font_0001_mi, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0002_l", font_0002_l, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0003_li", font_0003_li, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0003_m", font_0003_m, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0003_i", font_0003_i, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0003_el", font_0003_el, fCB2); }.bind(this),
-        // function(fCB2) { load("font_0003_eli", font_0003_eli, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_b", font_0001_b, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_bi", font_0001_bi, fCB2); }.bind(this),
       ],
       function (err, results)
       {
@@ -164,7 +156,7 @@ class Main extends HTMLElement
     parallel
     (
       [
-        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
+        // function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
         function(fCB) { this.components._words = new Words(fCB); }.bind(this),
         function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
@@ -181,7 +173,7 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
-    DOM.append(this.components._webGL, this.domShadowRoot);
+    // DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
     DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);
@@ -215,7 +207,9 @@ class Main extends HTMLElement
   onScrollCallComponentIntro()
   {
     // NOTE: Components are responsible for checking if their intro has already been called.
-    // if (this.testComponentInView("_header")) this.components._header.intro();
+    if (this.testComponentInView("_introduction")) this.components._introduction.intro();
+    if (this.testComponentInView("_words")) this.components._words.intro();
+    if (this.testComponentInView("_footer")) this.components._footer.intro();
     // if (this.testComponentInView("_acknowledgement")) this.components._acknowledgement.intro();
     // if (this.testComponentInView("_curriculumvitae")) this.components._curriculumvitae.intro();
     // if (this.testComponentInView("_casestudyGoogleEarthStudio")) this.components._curriculumvitae.intro();
