@@ -68,7 +68,7 @@
 {
  .column h1
  {
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
   width: 280px;
   font-size: 25px;
   line-height: 35px;
@@ -93,7 +93,7 @@
 {
  .column h2
  {
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
   width: 280px;
   font-size: 22px;
   line-height: 35px;
@@ -125,7 +125,7 @@
 {
   .column p
   {
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 10px;
     width: 280px;
     font-size: 20px;
     line-height: 35px;
