@@ -434,10 +434,20 @@ class WebGL extends HTMLElement
 
     const map = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
 
-    let onMouseMove = function(e) {
+    let onCursorMove = function(e) {
+      console.log(e)
+
+      let val;
 
       // map domelem width to a smaller range
-      const val = map(e.clientX, 0, this.domElement.clientWidth, -35, 35);
+      if (e.type === "mousemove")
+      {
+        val = map(e.clientX, 0, this.domElement.clientWidth, -70, 70);
+      }
+      else if (e.type === "touchmove")
+      {
+        val = map(e.touches[0].clientX, 0, this.domElement.clientWidth, -70, 70);
+      };
 
       gsap.killTweensOf(this.entities.lights['pointLight'].position);
       gsap.to
@@ -446,7 +456,8 @@ class WebGL extends HTMLElement
         { x: val, duration: 1.200, ease: "sine.Out" },
       );
     };
-    window.addEventListener("mousemove", onMouseMove.bind(this));
+    window.addEventListener("mousemove", onCursorMove.bind(this));
+    window.addEventListener("touchmove", onCursorMove.bind(this));
 
     console.log("_webGL: setWebGLEventHandlers: done");
 
