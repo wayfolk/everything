@@ -7,7 +7,7 @@ import
 {
   getGPUTier,
 }
-from 'detect-gpu';
+from "detect-gpu";
 
 ///////////////
 ///// OBJ /////

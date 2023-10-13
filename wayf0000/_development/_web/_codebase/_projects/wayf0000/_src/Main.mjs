@@ -21,7 +21,7 @@ import font_0001_b from "./_assets/_fonts/font_0001_b.woff2";
 import font_0001_bi from "./_assets/_fonts/font_0001_bi.woff2";
 
 ///// COMPONENTS
-// import WebGL from "./_components/_webgl/WebGL.mjs";
+import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
 import Words from "./_components/_words/Words.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
@@ -49,11 +49,12 @@ class Main extends HTMLElement
 
   __init()
   {
-    parallel
+    series
     (
       [
         function(fCB) { ENV.detectGPU(fCB); }.bind(this),
         function(fCB) { this.loadFonts(fCB); }.bind(this),
+        // function(fCB) { this.waitforDomLoaded(fCB); }.bind(this),
         function(fCB) { this.createComponentInstances(fCB); }.bind(this),
         function(fCB) { this.createShadowDOM(fCB); }.bind(this),
         function(fCB) { this.populateShadowDOM(fCB); }.bind(this),
@@ -134,7 +135,7 @@ class Main extends HTMLElement
       );
     };
 
-    parallel
+    series
     (
       [
         // TODO: check if we use all these
@@ -151,12 +152,25 @@ class Main extends HTMLElement
     );
   };
 
+  // waitforDomLoaded(fCB) {
+  //   if (document.readyState !== 'loading') {
+  //     console.log('document is already ready, just execute code here');
+  //     // myI?nitCode();
+  //     fCB();
+  //   } else {
+  //     document.addEventListener('DOMContentLoaded', function () {
+  //         console.log('document was not ready, place code here');
+  //         // myInitCode();
+  //     });
+  // }
+  // };
+
   createComponentInstances(fCB)
   {
-    parallel
+    series
     (
       [
-        // function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
+        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
         function(fCB) { this.components._words = new Words(fCB); }.bind(this),
         function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
@@ -164,6 +178,7 @@ class Main extends HTMLElement
       ],
       function (err, results)
       {
+        console.log("ello")
         fCB();
 
       }.bind(this)
@@ -173,30 +188,30 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
-    // DOM.append(this.components._webGL, this.domShadowRoot);
+    DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
     DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);
-
+    console.log("ASdasdas")
     fCB();
   };
 
   setEventHandlers(fCB)
   {
-    const onDomScrollListener = window.addEventListener
-    (
-      "scroll", this.onDomScrollCallback.bind(this)
-    );
+    // const onDomScrollListener = window.addEventListener
+    // (
+    //   "scroll", this.onDomScrollCallback.bind(this)
+    // );
 
-    // We call it once, as the browser initially doesn't fire this event
-    this.onDomScrollCallback()
+    // // We call it once, as the browser initially doesn't fire this event
+    // this.onDomScrollCallback()
 
-    const onDomLoaded = function(fCB)
-    {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB(); }.bind(this));
-    };
-
-    onDomLoaded(fCB);
+    // const onDomLoaded = function(fCB)
+    // {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB(); }.bind(this));
+    // };
+    fCB();
+    // onDomLoaded(fCB);
   };
 
   onDomScrollCallback = function(e)
@@ -210,10 +225,6 @@ class Main extends HTMLElement
     if (this.testComponentInView("_introduction")) this.components._introduction.intro();
     if (this.testComponentInView("_words")) this.components._words.intro();
     if (this.testComponentInView("_footer")) this.components._footer.intro();
-    // if (this.testComponentInView("_acknowledgement")) this.components._acknowledgement.intro();
-    // if (this.testComponentInView("_curriculumvitae")) this.components._curriculumvitae.intro();
-    // if (this.testComponentInView("_casestudyGoogleEarthStudio")) this.components._curriculumvitae.intro();
-    // if (this.testComponentInView("_footer")) this.components._footer.intro();
   };
 
   /////////////////////////

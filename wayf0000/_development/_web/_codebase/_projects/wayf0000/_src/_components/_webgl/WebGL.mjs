@@ -3,7 +3,7 @@
 ///////////////////
 
 /// NPM
-import { log, parallel, series } from "async";
+import { series } from "async";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
@@ -31,7 +31,8 @@ import sHTML from './WebGL.html';
 import sCSS from './WebGL.css';
 
 /// WEBGL ASSETS
-import sample_draco from './_assets/the-man-in-the-wall_LOD1.glb';
+import dracoTheManInTheWall_LOD0 from './_assets/the-man-in-the-wall_LOD0.glb';
+import dracoTheManInTheWall_LOD1 from './_assets/the-man-in-the-wall_LOD1.glb';
 
 /////////////////
 ///// CLASS /////
@@ -39,6 +40,8 @@ import sample_draco from './_assets/the-man-in-the-wall_LOD1.glb';
 
 class WebGL extends HTMLElement
 {
+  componentIsConnected = false;
+
   scene = Object.create(null);
   camera = Object.create(null);
   entities = { lights: Object.create(null), helpers: Object.create(null) };
@@ -61,13 +64,23 @@ class WebGL extends HTMLElement
     this.__init(fOptionalCB);
   };
 
+  // TODO: refactor this. We use it to delay initialising webgl until the dom is ready
+  connectedCallback()
+  {
+    this.componentIsConnected = true;
+    console.log("WAAAA")
+
+    this.__webGL();
+  }
+
   ///////////////////////////
   ///// CLASS LIFECYCLE /////
   ///////////////////////////
 
   __init(fOptionalCB)
   {
-    series(
+    series
+    (
       [
         function(fCB) { this.createShadowDOM(fCB); }.bind(this),
         function(fCB) { this.setEventHandlers(fCB); }.bind(this),
@@ -76,7 +89,7 @@ class WebGL extends HTMLElement
       {
         console.log("_webGL: __init: done");
 
-        this.__webGL(fOptionalCB);
+        fOptionalCB();
       }.bind(this)
     );
   };
@@ -124,37 +137,44 @@ class WebGL extends HTMLElement
 
   setEventHandlers(fCB)
   {
-    let onDomLoaded = function(fCB2) {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+   
+    // setTimeout(function()  {
+      // fCB();
+    // }.bind(this), 1000);
+    // window.addEventListener("DOMContentLoaded", function(e)
+    // {
+    //   console.log("dom loaded")
+      // fCB();
+    // }.bind(this));
+    // fCB();
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
+    // series
+    // (
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
         let onWindowResize = function(e) {
           this.setElementSizes(this.domElement.clientWidth, this.domElement.clientHeight);
         };
         window.addEventListener("resize", onWindowResize.bind(this));
 
-        const map = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
-
-        console.log("_webGL: setEventHandlers: done");
+        // console.log("_webGL: setEventHandlers: done");
 
         fCB();
-      }.bind(this)
-    );
+      // }.bind(this)
+    // );
   };
 
   ///////////////////////////
   ///// WEBGL LIFECYCLE /////
   ///////////////////////////
 
-  __webGL(fOptionalCB)
+  __webGL()
   {
-    series(
+    series
+    (
       [
         function(fCB) { this.createScene(fCB); }.bind(this),
         function(fCB) { this.loadResources(fCB); }.bind(this),
@@ -181,13 +201,13 @@ class WebGL extends HTMLElement
           { opacity: 1.0, duration: .900, delay: 0.100, ease: "none" },
         );
 
-        gsap.to
-        (
-          this.domOverlayElement,
-          { opacity: 1.0, duration: .100, delay: 0.0, ease: "none" },
-        );
+        // gsap.to
+        // (
+        //   this.domOverlayElement,
+        //   { opacity: 1.0, duration: .000, delay: 0.100, ease: "none" },
+        // );
 
-        fOptionalCB();
+        // fOptionalCB();
       }.bind(this)
     );
   };
@@ -197,11 +217,11 @@ class WebGL extends HTMLElement
   //////////////////////////////
 
   createScene(fCB)
-  {
+  {  
     const nDomWebglWidth = this.domElement.clientWidth;
     const nDomWebglHeight = this.domElement.clientHeight;
-    const fPixelRatio = window.devicePixelRatio; // 720 x 3 = 2160 //  window.devicePixelRatio
-    // const fPixelRatio = 1.0; // 720 x 3 = 2160 //  window.devicePixelRatio
+    
+    const fPixelRatio = window.devicePixelRatio;
 
     this.scene = new THREE.Scene();
 
@@ -248,7 +268,7 @@ class WebGL extends HTMLElement
     this.renderer.shadowMap.type = THREE.VSMShadowMap;
     this.renderer.shadowMap.autoUpdate = false;
     this.renderer.shadowMap.needsUpdate = true;
-    this.renderer.setClearColor(new THREE.Color(0xffffff), .0); // controls bg alpha too
+    this.renderer.setClearColor(new THREE.Color(0xffffff), 0.0); // controls bg alpha too
     this.renderer.info.autoReset = false;
     this.domElement.appendChild(this.renderer.domElement);
 
@@ -260,7 +280,7 @@ class WebGL extends HTMLElement
       this.renderer,
       {
         frameBufferType: THREE.HalfFloatType,
-        multisampling: 4, // MSAA. Requires a WebGL 2 context.
+        multisampling: (!ENV.getGPU().isMobile ? 4.0 : 2.0), // MSAA. Requires a WebGL 2 context.
       }
     );
 
@@ -292,6 +312,9 @@ class WebGL extends HTMLElement
     this.composer.addPass(_RenderPass);
     this.composer.addPass(_EffectPass);
 
+    // intial resize (this gets called in a futere windows eventhandler too)
+    this.setElementSizes(this.domElement.clientWidth, this.domElement.clientHeight);
+
     fCB();
   };
 
@@ -302,10 +325,13 @@ class WebGL extends HTMLElement
     dracoLoader.setDecoderPath('/_assets/_draco/');
     gltfLoader.setDRACOLoader(dracoLoader);
 
-    gltfLoader.load(sample_draco, function(gltf) {
+    const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheManInTheWall_LOD0 : dracoTheManInTheWall_LOD1)
+
+    gltfLoader.load(assetToLoad, function(gltf) {
       this.resources["sample_draco"] = gltf;
       fCB();
     }.bind(this));
+
   };
 
   processResources(fCB)
@@ -353,8 +379,8 @@ class WebGL extends HTMLElement
   populateScene(fCB)
   {
     this.resources["sample_draco"].scene.rotateX(2 * Math.PI * (180 /360) ) // rotate 180 deg
-    this.scene.add(this.resources["sample_draco"].scene);
 
+    this.scene.add(this.resources["sample_draco"].scene);
 
     this.entities.lights['pointLight'] = new THREE.PointLight(0xffffff, 25000, 500, 2.0);
     this.entities.lights['pointLight'].position.set(0, -100, -25);
@@ -381,21 +407,6 @@ class WebGL extends HTMLElement
     this.entities.helpers['pointLightHelper'].visible = false;
     this.scene.add(this.entities.helpers['pointLightHelper']);
 
-    // // if (!this.env.bIsMobile && this.env.nGPUTier > 1) {
-    //   const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
-    //   const mirror = new Reflector(mirrorGeometry, {
-    //     clipBias: 0.000001,
-    //     textureWidth: 2048,
-    //     textureHeight: 2048,
-    //     color: new THREE.Color(0xcccccc),
-    //   });
-    //   mirror.position.y = -0.01;
-    //   mirror.position.z = 0;
-    //   mirror.rotation.x =  Math.PI / 2;
-    //   // mirror.rotateX((2 * Math.PI * (100 /360)));
-    //   this.scene.add(mirror);
-    // // };
-
     fCB();
   };
 
@@ -414,7 +425,6 @@ class WebGL extends HTMLElement
     this.controls.target.z = -5.198334749258187;
 
     window.controls = this.controls; // for easy logging
-
 
     fCB();
   };
@@ -469,6 +479,7 @@ class WebGL extends HTMLElement
   setElementSizes(updatedWidth, updatedHeight)
   {
     this.renderer.setSize(updatedWidth, updatedHeight);
+    this.composer.setSize(updatedWidth, updatedHeight);
 
     this.camera.aspect = updatedWidth / updatedHeight;
     this.camera.updateProjectionMatrix();

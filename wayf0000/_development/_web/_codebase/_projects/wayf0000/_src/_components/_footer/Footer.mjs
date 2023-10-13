@@ -105,22 +105,22 @@ class Footer extends HTMLElement
 
   setEventHandlers(fCB)
   {
-    const onDomLoaded = function(fCB2)
-    {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+    // const onDomLoaded = function(fCB2)
+    // {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
+    // };
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
-        console.log("_footer: setEventHandlers: done");
+    // parallel(
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
+    //     console.log("_footer: setEventHandlers: done");
 
         fCB();
-      }.bind(this)
-    );
+      // }.bind(this)
+    // );
   };
 
   //////////////////////////
