@@ -44,6 +44,7 @@ class WebGL extends HTMLElement
 
   scene = Object.create(null);
   camera = Object.create(null);
+  nFov = 20;
   entities = { lights: Object.create(null), helpers: Object.create(null) };
   renderer = Object.create(null);
   resources = Object.create(null);
@@ -68,7 +69,6 @@ class WebGL extends HTMLElement
   connectedCallback()
   {
     this.componentIsConnected = true;
-    console.log("WAAAA")
 
     this.__webGL();
   }
@@ -137,34 +137,14 @@ class WebGL extends HTMLElement
 
   setEventHandlers(fCB)
   {
-   
-    // setTimeout(function()  {
-      // fCB();
-    // }.bind(this), 1000);
-    // window.addEventListener("DOMContentLoaded", function(e)
-    // {
-    //   console.log("dom loaded")
-      // fCB();
-    // }.bind(this));
-    // fCB();
+    let onWindowResize = function(e) {
+      this.setElementSizes(this.domElement.clientWidth, this.domElement.clientHeight);
+    };
+    window.addEventListener("resize", onWindowResize.bind(this));
 
-    // series
-    // (
-    //   [
-    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-    //   ],
-    //   function (err, results)
-    //   {
-        let onWindowResize = function(e) {
-          this.setElementSizes(this.domElement.clientWidth, this.domElement.clientHeight);
-        };
-        window.addEventListener("resize", onWindowResize.bind(this));
+    console.log("_webGL: setEventHandlers: done");
 
-        // console.log("_webGL: setEventHandlers: done");
-
-        fCB();
-      // }.bind(this)
-    // );
+    fCB();
   };
 
   ///////////////////////////
@@ -216,6 +196,24 @@ class WebGL extends HTMLElement
   ///// WEBGL CONTROL FLOW /////
   //////////////////////////////
 
+  /// TODO: move helper
+  calcVfov(nIntendedFov, nAspect)
+  {
+    // TODO: refactor
+    const DEG2RAD = Math.PI / 180.0;
+    const RAD2DEG = 180.0 / Math.PI;
+
+    function calculateVerticalFoV(horizontalFoV, nAspect) {
+      return Math.atan(Math.tan(horizontalFoV * DEG2RAD * 0.5)/nAspect) * RAD2DEG * 2.0;
+    };
+
+    function calculateHorizontalFoV(verticalFoV, aspect) {
+      return Math.atan(Math.tan(verticalFoV * DEG2RAD * 0.5)*aspect) * RAD2DEG * 2.0;
+    };
+
+    return calculateVerticalFoV(nIntendedFov, nAspect)
+  };
+
   createScene(fCB)
   {  
     const nDomWebglWidth = this.domElement.clientWidth;
@@ -225,21 +223,9 @@ class WebGL extends HTMLElement
 
     this.scene = new THREE.Scene();
 
-    // TODO: refactor
-    const DEG2RAD = Math.PI / 180.0;
-    const RAD2DEG = 180.0 / Math.PI;
-
-    function calculateVerticalFoV(horizontalFoV, aspect) {
-      return Math.atan(Math.tan(horizontalFoV * DEG2RAD * 0.5)/aspect) * RAD2DEG * 2.0;
-    };
-
-    function calculateHorizontalFoV(verticalFoV, aspect) {
-      return Math.atan(Math.tan(verticalFoV * DEG2RAD * 0.5)*aspect) * RAD2DEG * 2.0;
-    };
-
-    const aspect = nDomWebglWidth / nDomWebglHeight;
-		const vFoV = calculateVerticalFoV(20, Math.max(aspect, 16/9));
-    this.camera = new THREE.PerspectiveCamera(vFoV, aspect, 0.3, 2000);
+    const nAspect = nDomWebglWidth / nDomWebglHeight;
+     // careful, changes need to be reflected in the resize handler
+    this.camera = new THREE.PerspectiveCamera(this.calcVfov(this.nFov, nAspect), nAspect, 0.3, 2000);
     this.camera.position.z = 100;
 
     this.camera.position.x = 35.74099847324152;
@@ -379,33 +365,47 @@ class WebGL extends HTMLElement
   populateScene(fCB)
   {
     this.resources["sample_draco"].scene.rotateX(2 * Math.PI * (180 /360) ) // rotate 180 deg
-
     this.scene.add(this.resources["sample_draco"].scene);
+
+    const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
+    const mirror = new Reflector
+    (
+      mirrorGeometry, {
+        clipBias: 0.000001,
+        textureWidth: (!ENV.getGPU().isMobile ? 2048 : 512),
+        textureHeight: (!ENV.getGPU().isMobile ? 2048 : 512),
+        color: new THREE.Color(0xffffff),
+      }
+    );
+    mirror.position.y = -0.01;
+    mirror.position.z = 0;
+    mirror.rotation.x =  Math.PI / 2;
+    this.scene.add(mirror);
 
     this.entities.lights['pointLight'] = new THREE.PointLight(0xffffff, 25000, 500, 2.0);
     this.entities.lights['pointLight'].position.set(0, -100, -25);
 
     this.scene.add( this.entities.lights['pointLight'] );
 
-    this.entities.helpers['axesHelper'] = new THREE.AxesHelper(25);
-    this.entities.helpers['axesHelper'].visible = false;
-    this.scene.add(this.entities.helpers['axesHelper']);
+    // this.entities.helpers['axesHelper'] = new THREE.AxesHelper(25);
+    // this.entities.helpers['axesHelper'].visible = false;
+    // this.scene.add(this.entities.helpers['axesHelper']);
 
-    this.entities.helpers['gridHelper'] = new THREE.GridHelper(100, 10, 0x808080, 0x808080);
-    this.entities.helpers['gridHelper'].position.y = 0;
-    this.entities.helpers['gridHelper'].position.x = 0;
-    this.entities.helpers['gridHelper'].visible = false;
-    this.scene.add(this.entities.helpers['gridHelper']);
+    // this.entities.helpers['gridHelper'] = new THREE.GridHelper(100, 10, 0x808080, 0x808080);
+    // this.entities.helpers['gridHelper'].position.y = 0;
+    // this.entities.helpers['gridHelper'].position.x = 0;
+    // this.entities.helpers['gridHelper'].visible = false;
+    // this.scene.add(this.entities.helpers['gridHelper']);
 
-    this.entities.helpers['polarGridHelper'] = new THREE.PolarGridHelper(200, 16, 8, 64, 0x808080, 0x808080);
-    this.entities.helpers['polarGridHelper'].position.y = 0;
-    this.entities.helpers['polarGridHelper'].position.x = 0;
-    this.entities.helpers['polarGridHelper'].visible = false;
-    this.scene.add(this.entities.helpers['polarGridHelper']);
+    // this.entities.helpers['polarGridHelper'] = new THREE.PolarGridHelper(200, 16, 8, 64, 0x808080, 0x808080);
+    // this.entities.helpers['polarGridHelper'].position.y = 0;
+    // this.entities.helpers['polarGridHelper'].position.x = 0;
+    // this.entities.helpers['polarGridHelper'].visible = false;
+    // this.scene.add(this.entities.helpers['polarGridHelper']);
 
-    this.entities.helpers['pointLightHelper'] = new THREE.PointLightHelper(this.entities.lights['pointLight'], 1.0, 0x808080);
-    this.entities.helpers['pointLightHelper'].visible = false;
-    this.scene.add(this.entities.helpers['pointLightHelper']);
+    // this.entities.helpers['pointLightHelper'] = new THREE.PointLightHelper(this.entities.lights['pointLight'], 1.0, 0x808080);
+    // this.entities.helpers['pointLightHelper'].visible = false;
+    // this.scene.add(this.entities.helpers['pointLightHelper']);
 
     fCB();
   };
@@ -481,6 +481,7 @@ class WebGL extends HTMLElement
     this.renderer.setSize(updatedWidth, updatedHeight);
     this.composer.setSize(updatedWidth, updatedHeight);
 
+    this.camera.fov = this.calcVfov(this.nFov, updatedWidth / updatedHeight);
     this.camera.aspect = updatedWidth / updatedHeight;
     this.camera.updateProjectionMatrix();
   };

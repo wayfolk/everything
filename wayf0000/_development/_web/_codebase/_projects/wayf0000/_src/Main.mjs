@@ -178,7 +178,6 @@ class Main extends HTMLElement
       ],
       function (err, results)
       {
-        console.log("ello")
         fCB();
 
       }.bind(this)
@@ -192,7 +191,6 @@ class Main extends HTMLElement
     DOM.append(this.components._introduction, this.domShadowRoot);
     DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);
-    console.log("ASdasdas")
     fCB();
   };
 
