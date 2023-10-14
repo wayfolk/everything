@@ -9,7 +9,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js"
 
-import { Reflector } from './_helpers/Reflector.js';
+// import { Reflector } from './_helpers/Reflector.js';
 
 import
 {
@@ -31,8 +31,14 @@ import sHTML from './WebGL.html';
 import sCSS from './WebGL.css';
 
 /// WEBGL ASSETS
-import dracoTheManInTheWall_LOD0 from './_assets/the-man-in-the-wall_LOD0.glb';
-import dracoTheManInTheWall_LOD1 from './_assets/the-man-in-the-wall_LOD1.glb';
+// import dracoTheManInTheWall_LOD0 from './_assets/the-man-in-the-wall_LOD0.glb';
+// import dracoTheManInTheWall_LOD1 from './_assets/the-man-in-the-wall_LOD1.glb';
+// import dracoTheVeil_LOD0 from './_assets/the-veil_LOD0.glb';
+// import dracoTheVeil_LOD1 from './_assets/the-veil_LOD1.glb';
+// import dracoAnotherWorldAwaits_LOD0 from './_assets/another-world-awaits_LOD0.glb';
+// import dracoAnotherWorldAwaits_LOD1 from './_assets/another-world-awaits_LOD1.glb';
+import dracoHome_LOD0 from './_assets/home_LOD0.glb';
+import dracoHome_LOD1 from './_assets/home_LOD1.glb';
 
 /////////////////
 ///// CLASS /////
@@ -311,8 +317,11 @@ class WebGL extends HTMLElement
     dracoLoader.setDecoderPath('/_assets/_draco/');
     gltfLoader.setDRACOLoader(dracoLoader);
 
-    const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheManInTheWall_LOD0 : dracoTheManInTheWall_LOD1)
-
+    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheManInTheWall_LOD0 : dracoTheManInTheWall_LOD1);
+    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheVeil_LOD0 : dracoTheVeil_LOD1);
+    const assetToLoad = (!ENV.getGPU().isMobile ? dracoAnotherWorldAwaits_LOD0 : dracoAnotherWorldAwaits_LOD1);
+    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoHome_LOD0 : dracoHome_LOD1);
+    
     gltfLoader.load(assetToLoad, function(gltf) {
       this.resources["sample_draco"] = gltf;
       fCB();
@@ -364,23 +373,24 @@ class WebGL extends HTMLElement
 
   populateScene(fCB)
   {
-    this.resources["sample_draco"].scene.rotateX(2 * Math.PI * (180 /360) ) // rotate 180 deg
+    // this.resources["sample_draco"].scene.rotateX(2 * Math.PI * (180 /360) ) // rotate 180 deg
+    this.resources["sample_draco"].scene.scale.set(.35,.35,.35);
     this.scene.add(this.resources["sample_draco"].scene);
 
     const mirrorGeometry = new THREE.PlaneGeometry(22.1, 29.1, 1, 1);
-    const mirror = new Reflector
-    (
-      mirrorGeometry, {
-        clipBias: 0.000001,
-        textureWidth: (!ENV.getGPU().isMobile ? 2048 : 512),
-        textureHeight: (!ENV.getGPU().isMobile ? 2048 : 512),
-        color: new THREE.Color(0xffffff),
-      }
-    );
-    mirror.position.y = -0.01;
-    mirror.position.z = 0;
-    mirror.rotation.x =  Math.PI / 2;
-    this.scene.add(mirror);
+    // const mirror = new Reflector
+    // (
+    //   mirrorGeometry, {
+    //     clipBias: 0.000001,
+    //     textureWidth: (!ENV.getGPU().isMobile ? 2048 : 512),
+    //     textureHeight: (!ENV.getGPU().isMobile ? 2048 : 512),
+    //     color: new THREE.Color(0xffffff),
+    //   }
+    // );
+    // mirror.position.y = -0.01;
+    // mirror.position.z = 0;
+    // mirror.rotation.x =  Math.PI / 2;
+    // this.scene.add(mirror);
 
     this.entities.lights['pointLight'] = new THREE.PointLight(0xffffff, 25000, 500, 2.0);
     this.entities.lights['pointLight'].position.set(0, -100, -25);

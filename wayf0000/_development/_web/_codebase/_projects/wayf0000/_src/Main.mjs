@@ -15,13 +15,13 @@ import sHTML from "./Main.html";
 import sCSS from "./Main.css";
 
 ///// CSS ASSETS
-import font_0001_m from "./_assets/_fonts/font_0001_m.woff2";
-import font_0001_mi from "./_assets/_fonts/font_0001_mi.woff2";
-import font_0001_b from "./_assets/_fonts/font_0001_b.woff2";
-import font_0001_bi from "./_assets/_fonts/font_0001_bi.woff2";
+import font_0001_300 from "./_assets/_fonts/font_0001_300.woff2";
+import font_0001_300i from "./_assets/_fonts/font_0001_300i.woff2";
+import font_0001_500 from "./_assets/_fonts/font_0001_500.woff2";
+import font_0001_500i from "./_assets/_fonts/font_0001_500i.woff2";
 
 ///// COMPONENTS
-import WebGL from "./_components/_webgl/WebGL.mjs";
+// import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
 import Words from "./_components/_words/Words.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
@@ -73,7 +73,8 @@ class Main extends HTMLElement
         (
           document.body,
           { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
-          { backgroundColor: "rgb(241, 240, 224)", duration: .900, delay: 0.0, ease: "none" },
+          // { backgroundColor: "rgb(53, 99, 124)", duration: .900, delay: 0.0, ease: "none" },
+          { backgroundColor: "rgb(252, 255, 236)", duration: .900, delay: 0.0, ease: "none" },
         );
       }.bind(this)
     );
@@ -139,10 +140,11 @@ class Main extends HTMLElement
     (
       [
         // TODO: check if we use all these
-        function(fCB2) { load("font_0001_m", font_0001_m, fCB2); }.bind(this),
-        function(fCB2) { load("font_0001_mi", font_0001_mi, fCB2); }.bind(this),
-        function(fCB2) { load("font_0001_b", font_0001_b, fCB2); }.bind(this),
-        function(fCB2) { load("font_0001_bi", font_0001_bi, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_300", font_0001_300, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_300i", font_0001_300i, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_500", font_0001_500, fCB2); }.bind(this),
+        function(fCB2) { load("font_0001_500i", font_0001_500i, fCB2); }.bind(this),
+        // function(fCB2) { load("font_0001_bi", font_0001_bi, fCB2); }.bind(this),
       ],
       function (err, results)
       {
@@ -170,7 +172,7 @@ class Main extends HTMLElement
     series
     (
       [
-        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
+        // function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
         function(fCB) { this.components._words = new Words(fCB); }.bind(this),
         function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
@@ -187,7 +189,7 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
-    DOM.append(this.components._webGL, this.domShadowRoot);
+    // DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
     DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);

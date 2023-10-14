@@ -1,7 +1,13 @@
+*
+{
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+}
 ::selection
 {
-  color: rgb(255, 255, 255);
-  background: rgb(255, 17, 0);
+  color: rgb(252, 255, 236);
+  background: rgb(0, 0, 0);
 }
 
 .column
@@ -52,9 +58,10 @@
 
 .column h1
 {
-  font-family: "font_0001_b";
-  font-weight: 500;
-  color: #ff2515;
+  font-family: "font_0001_500";
+  /* font-weight: 500; */
+  font-size: 40px;
+  /* color: white; */
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -78,9 +85,11 @@
 
 .column h2
 {
-  font-family: "font_0001_bi";
-  font-weight: 500;
+  font-family: "font_0001_300i";
+  /* font-weight: 500; */
+  font-size: 80px;
   /* color: #787878; */
+  /* color: white; */
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -106,10 +115,11 @@
 {
   margin: 0 0 50px 0;
   width: 600px;
-  font-family: "font_0001_m";
-  font-size: 27px;
+  font-family: "font_0001_300";
+  font-size: 35px;
   font-weight: 400;
-  line-height: 50px;
+  line-height: 63px;
+  /* color: white; */
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -135,6 +145,6 @@
 }
 
 .column p .emphasis {
-  font-family: "font_0001_mi";
+  font-family: "font_0001_300i";
 
 }

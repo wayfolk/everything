@@ -1,7 +1,7 @@
 ::selection
 {
-  color: rgb(255, 255, 255);
-  background: rgb(255, 17, 0);
+  color: rgb(252, 255, 236);
+  background: rgb(0, 0, 0);
 }
 
 .column
@@ -56,10 +56,12 @@
 {
   margin: 50px 0 50px 0;
   width: 750px;
-  font-family: "font_0001_mi";
-  font-size: 27px;
-  font-weight: 400;
-  line-height: 50px;
+  /* font-family: "font_0001_mi"; */
+  font-family: "font_0001_500";
+  font-size: 57px;
+  /* font-weight: 400; */
+  line-height: 82px;
+  /* color: white; */
 }
 @media (max-width: 1399.98px)
 {
