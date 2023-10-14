@@ -1,7 +1,7 @@
 ::selection
 {
-  color: rgb(0, 0, 0);
-  background: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
 }
 
 *
@@ -26,6 +26,22 @@ section p.description
 
   opacity: 0;
 }
+@media (max-width: 1399.98px)
+{
+  section p.description
+  {
+    /* font-size: 38px; */
+  }
+}
+@media (max-width: 1199.98px)
+{
+
+}
+@media (max-width: 575.98px)
+{
+
+}
+
 section p.description b
 {
   font-family: "font_0002_r";
@@ -42,25 +58,35 @@ section a.download
   font-family: "font_0003_li";
   font-size: 27px;
   color: rgb(110, 110, 110);
-  text-decoration: none;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 0px;
+  text-decoration-color: black;
 
   opacity: 0;
 }
 
 section .clients
 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
-  width: 1600px;
-  height: 445px;
-  background-color: rgb(228, 254, 207);
+  padding: 50px 0 0 0;
+  width: 100%;
+  max-width: 1400px;
+  height: 370px;
+  /* background-color: rgb(228, 254, 207); */
+  background-color: rgb(254, 96, 62);
 
   opacity: 0;
 }
 
 section .clients .client
 {
-  margin: 60px 0 30px 170px;
-  float: left;
+  /* margin: 60px 0 30px 130px; */
+  /* float: left; */
+  /* flex-basis: 25%; */
+  margin: 0 60px;
   width: 200px;
   height: 100px;
   background-size: 100% 100%;

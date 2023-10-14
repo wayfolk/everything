@@ -113,21 +113,21 @@ class Acknowledgement extends HTMLElement
 
   setEventHandlers(fCB)
   {
-    let onDomLoaded = function(fCB2) {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+    // let onDomLoaded = function(fCB2) {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
+    // };
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
-        console.log("_acknowledgement: setEventHandlers: done");
+    // parallel(
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
+    //     console.log("_acknowledgement: setEventHandlers: done");
 
         fCB();
-      }.bind(this)
-    );
+      // }.bind(this)
+    // );
   };
 
   //////////////////////////

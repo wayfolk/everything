@@ -132,22 +132,22 @@ class Footer extends HTMLElement
 
   setEventHandlers(fCB)
   {
-    const onDomLoaded = function(fCB2)
-    {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+    // const onDomLoaded = function(fCB2)
+    // {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
+    // };
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
-        console.log("_footer: setEventHandlers(): done");
+    // parallel(
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
+    //     console.log("_footer: setEventHandlers(): done");
 
         fCB();
-      }.bind(this)
-    );
+      // }.bind(this)
+    // );
 
     ///// BUTTON
     const domParagraphButton_onMouseEnterHandler = function(e)
@@ -159,7 +159,7 @@ class Footer extends HTMLElement
       gsap.to
       (
         this.domReferences.domParagraphButton,
-        { y: -5, color: "rgb(255, 255, 255)", backgroundColor: "rgb(0, 0, 0)", boxShadow: "0 0 60px 30px rgba(228, 254, 207, 1.0), 0 0 140px 80px rgba(135, 135, 135, 1.0)", duration: 0.300, delay: .0, ease: "sine.In" },
+        { y: -5, color: "rgb(0, 0, 0)", backgroundColor: "rgb(255, 255, 255)", boxShadow: "0 0 60px 30px rgba(255, 255, 255, 1.0), 0 0 140px 80px rgba(255, 100, 68, 1.0)", duration: 0.300, delay: .0, ease: "sine.In" },
       );
     };
 
@@ -172,7 +172,7 @@ class Footer extends HTMLElement
       gsap.to
       (
         this.domReferences.domParagraphButton,
-        {  y: 0, color: "rgb(0, 0, 0)", backgroundColor: "rgb(228, 254, 207)", boxShadow: "0 0 60px 30px rgba(228, 254, 207, 0.0), 0 0 140px 80px rgba(135, 135, 135, 0.0)", duration: 0.600, delay: .0, ease: "sine.Out" },
+        {  y: 0, color: "rgb(255, 255, 255)", backgroundColor: "rgb(255, 100, 68)", boxShadow: "0 0 60px 30px rgba(228, 254, 207, 0.0), 0 0 140px 80px rgba(135, 135, 135, 0.0)", duration: 0.600, delay: .0, ease: "sine.Out" },
       );
     };
 

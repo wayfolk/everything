@@ -63,8 +63,8 @@
     "wayf0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:projects-wayf0000-install\"",
     "wayf0000-dev": "concurrently -p \"{name}:\" -n \"server_start,wayf0000-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:projects-wayf0000-build-watch\"",
 
-    "theu000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:projects-wayf0000-install\"",
-    "theu000-dev": "concurrently -p \"{name}:\" -n \"server_start,theu0000-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:projects-theu0000-build-watch\"",
+    "theu0000-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:projects-wayf0000-install\"",
+    "theu0000-dev": "concurrently -p \"{name}:\" -n \"server_start,theu0000-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:projects-theu0000-build-watch\"",
 
     "engine-install": "concurrently -p \"{name}:\" -c \"dim\" \"npm:common-development-web-builder-install\" \"npm:common-development-web-server-install\" \"npm:common-development-web-engine-install\"",
     "engine-dev": "concurrently -p \"{name}:\" -n \"server_start,engine-build-watch\" -c \"dim\" \"npm:common-development-web-server-start\" \"npm:common-development-web-engine-build-watch\"",

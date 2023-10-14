@@ -1,7 +1,7 @@
 ::selection
 {
-  color: rgb(0, 0, 0);
-  background: rgb(228, 254, 207);
+  color: rgb(255, 255, 255);
+  background: rgba(254, 96, 62, 1.0);
 }
 
 *
@@ -17,25 +17,37 @@
 header
 {
   z-index: 1;
-  position: relative;
+  /* position: relative; */
+  position: absolute;
+  top: 0;
   margin: 0 auto;
-  height: 745px;
+  width: 100%;
+  height: 1200px;
 
-  color: rgb(228, 254, 207);
+  /* color: rgb(228, 254, 207); */
+
+  color: rgb(255, 0, 0);
+  mix-blend-mode: hard-light;
 }
-@media (max-width: 1399.98px) {}
+@media (max-width: 1399.98px)
+{
+  header
+  {
+    height: 800px;
+  }
+}
 @media (max-width: 1199.98px)
 {
   header
   {
-    height: 500px;
+    height: 600px;
   }
 }
 @media (max-width: 575.98px)
 {
   header
   {
-    height: 300px;
+    height: 400px;
   }
 }
 
@@ -61,6 +73,7 @@ header h1
 {
   header h1
   {
+    bottom: -30px;
     font-size: 100px;
     line-height: 125px;
   }
@@ -95,8 +108,9 @@ header h1
 header .location
 {
   position: absolute;
-  right: 120px;
-  bottom: 293px;
+  /* right: 120px; */
+  right: 304px;
+  bottom: 266px;
   font-family: "font_0002_l";
   font-size: 45px;
 
@@ -106,6 +120,8 @@ header .location
 {
   header .location
   {
+    /* right: ; */
+    bottom: 249px;
     font-size: 35px;
   }
 }
@@ -114,10 +130,10 @@ header .location
   header .location {
     /* height: 300px; */
     right: 60px;
-    bottom: 170px;
+    bottom: 155px;
     /* width: 105px; */
     font-size: 25px;
-    text-align: right;
+    /* text-align: right; */
   }
 }
 @media (max-width: 575.98px)
@@ -125,7 +141,7 @@ header .location
   header .location {
     /* height: 300px; */
     right: -2px;
-    bottom: 140px;
+    bottom: 100px;
     width: 105px;
     font-size: 20px;
     text-align: right;
@@ -140,7 +156,8 @@ header .year
 {
   position: absolute;
   right: 426px;
-  bottom: 239px;
+  bottom: 177px;
+  /* left: 1200px; */
   font-family: "font_0002_r";
   font-size: 45px;
 
@@ -150,6 +167,8 @@ header .year
 {
   header .year
   {
+    right: 400px;
+    bottom: 164px;
     font-size: 35px;
   }
 }
@@ -157,41 +176,40 @@ header .year
 {
   header .year
   {
-       /* height: 300px; */
-       right: 230px;
-       bottom: 140px;
-       /* width: 105px; */
-       font-family: "font_0002_l";
-       font-size: 25px;
-       text-align: right;
+    /* height: 300px; */
+    right: 128px;
+    bottom: 103px;
+    /* width: 105px; */
+    /* font-family: "font_0002_r"; */
+    font-size: 25px;
+    text-align: right;
   }
 }
 @media (max-width: 575.98px)
 {
   header .year
   {
-    left: -2px;
-    top: 90px;
-    font-family: "font_0002_l";
+    /* left: -2px; */
+    right: 0;
+    bottom: 67px;
+    /* font-family: "font_0002_l"; */
     font-size: 20px;
-    text-align: left;
+    /* text-align: left; */
   }
 }
 
-header .image
+/* header .image
 {
   position: absolute;
   top: 0;
   z-index: -1;
-  /* we can rewrite css on build, or set the bg image in js */
-  /* background-image: url("./_assets/_images/header_background_3840x1491_q80.webp"); */
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
 
   opacity: 0;
-}
+} */
 
 /* header .blend
 {

@@ -188,6 +188,15 @@ class HttpsServer extends Server
       },
     );
 
+    this._uWSServer.addServerName
+    (
+      "_local.theundebruijn.com",
+      {
+        key_file_name: "./_certs/wildcard_theundebruijn_com.key",
+        cert_file_name: "./_certs/wildcard_theundebruijn_com_certificate_chain.crt",
+      },
+    );
+
     fCB();
   };
 
@@ -218,6 +227,12 @@ class HttpsServer extends Server
     );
 
     this._uWSServer.domain("www.theundebruijn.com").get("/*", function(res, req)
+      {
+        this.requestHandlerGET(req, res);
+      }.bind(this)
+    );
+
+    this._uWSServer.domain("_local.theundebruijn.com").get("/*", function(res, req)
       {
         this.requestHandlerGET(req, res);
       }.bind(this)

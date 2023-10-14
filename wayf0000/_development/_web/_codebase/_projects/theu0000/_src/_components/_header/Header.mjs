@@ -111,8 +111,8 @@ class Header extends HTMLElement
 
       // TODO: do this by overwriting the CSS instead? hmm
       // this does give us some control over asset loading
-      const domHeaderImage = domTemplateHTML.content.querySelectorAll("header .image")[0];
-      domHeaderImage.style.backgroundImage = "url(" + imgHeaderImage + ")";
+      // const domHeaderImage = domTemplateHTML.content.querySelectorAll("header .image")[0];
+      // domHeaderImage.style.backgroundImage = "url(" + imgHeaderImage + ")";
 
       this.domShadowRoot.appendChild
       (
@@ -128,29 +128,29 @@ class Header extends HTMLElement
     this.domReferences.domHeaderH1 = this.domShadowRoot.querySelectorAll("header h1")[0];
     this.domReferences.domHeaderLocation = this.domShadowRoot.querySelectorAll("header .location")[0];
     this.domReferences.domHeaderYear = this.domShadowRoot.querySelectorAll("header .year")[0];
-    this.domReferences.domHeaderImage = this.domShadowRoot.querySelectorAll("header .image")[0];
+    // this.domReferences.domHeaderImage = this.domShadowRoot.querySelectorAll("header .image")[0];
 
     fCB();
   };
 
   setEventHandlers(fCB)
   {
-    const onDomLoaded = function(fCB2)
-    {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+    // const onDomLoaded = function(fCB2)
+    // {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
+    // };
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
-        console.log("_header: setEventHandlers: done");
+    // parallel(
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
+    //     console.log("_header: setEventHandlers: done");
 
         fCB();
-      }.bind(this)
-    );
+    //   }.bind(this)
+    // );
   };
 
   //////////////////////////
@@ -171,16 +171,16 @@ class Header extends HTMLElement
     if (this.bIntroAlreadyCalled) { return; } else { this.bIntroAlreadyCalled = true; };
 
     // Animate header image.
-    gsap.fromTo
-    (
-      this.domReferences.domHeaderImage,
-      { y: -25 }, { y: 0, duration: 1.200, delay: 0 + nDelay, ease: "sine.out" }
-    );
-    gsap.fromTo
-    (
-      this.domReferences.domHeaderImage,
-      { opacity: .0 }, { opacity: 1, duration: 1.200, delay: 0 + nDelay, ease: "none" }
-    );
+    // gsap.fromTo
+    // (
+    //   this.domReferences.domHeaderImage,
+    //   { y: -25 }, { y: 0, duration: 1.200, delay: 0 + nDelay, ease: "sine.out" }
+    // );
+    // gsap.fromTo
+    // (
+    //   this.domReferences.domHeaderImage,
+    //   { opacity: .0 }, { opacity: 1, duration: 1.200, delay: 0 + nDelay, ease: "none" }
+    // );
 
     // Animate H1
     const aHeaderH1Words = this.domReferences.domHeaderH1.textContent.split(" ");

@@ -16,7 +16,7 @@ section .container
   /* padding: 0 0 200px 110px; */
   width: 800px;
   /* height: 1200px; */
-  background-color: rgb(228, 254, 207);
+  background-color: rgb(255, 255, 255);
 }
 
 section .container h2
@@ -84,8 +84,8 @@ section .container .awards
 
 section .container .awards .image
 {
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
 }
 
 
@@ -150,13 +150,13 @@ section#Gorillaz .container .awards
 section#Gorillaz .container .awards .image.Clio
 {
   top: -68px;
-  left: -950px;
+  left: -880px;
 }
 
 section#Gorillaz .container .awards .image.Cannes
 {
   top: -68px;
-  left: -750px;
+  left: -730px;
 }
 
 

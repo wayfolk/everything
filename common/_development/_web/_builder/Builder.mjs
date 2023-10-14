@@ -197,7 +197,7 @@ class Builder
         // drop: [ "console", "debugger" ],
         outdir: this.sProjectBuildPath,
         outExtension: { ".js": ".mjs" },
-        loader: { ".html" : "text", ".css": "text", ".glb": "file", ".webp": "file", ".png": "file", ".woff2": "file", ".mp4": "file" },
+        loader: { ".html" : "text", ".css": "text", ".glb": "file", ".webp": "file", ".png": "file", ".woff2": "file", ".mp4": "file", ".pdf": "file" },
         assetNames: "[dir]/[name]_" + this.sUniqueBuildUUID,
         platform: "browser",
         // https://esbuild.github.io/api/#target

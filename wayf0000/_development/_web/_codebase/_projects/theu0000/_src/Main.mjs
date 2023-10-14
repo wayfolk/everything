@@ -3,7 +3,7 @@
 ///////////////////
 
 ///// NPM
-import { log, parallel, series } from "async";
+import { series } from "async";
 import { gsap } from "gsap";
 
 ///// LOCAL
@@ -25,13 +25,12 @@ import font_0003_el from "./_assets/_fonts/font_0003_el.woff2";
 import font_0003_eli from "./_assets/_fonts/font_0003_eli.woff2";
 
 ///// COMPONENTS
+import WebGL from "./_components/_webgl/WebGL.mjs";
 import Header from "./_components/_header/Header.mjs";
 import Acknowledgement from "./_components/_acknowledgement/Acknowledgement.mjs";
 import Curriculumvitae from "./_components/_curriculumvitae/Curriculumvitae.mjs";
 import Casestudy from "./_components/_casestudy/Casestudy.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
-
-// import WebGL from "./_components/_webgl/WebGL.mjs";
 
 /////////////////
 ///// CLASS /////
@@ -56,7 +55,7 @@ class Main extends HTMLElement
 
   __init()
   {
-    parallel
+    series
     (
       [
         function(fCB) { ENV.detectGPU(fCB); }.bind(this),
@@ -78,8 +77,8 @@ class Main extends HTMLElement
         gsap.fromTo
         (
           document.body,
-          { backgroundColor: "rgb(255, 255, 255)"},
-          { backgroundColor: "rgb(253, 245, 229)", duration: .900, delay: 1.0, ease: "none" },
+          { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
+          { backgroundColor: "rgb(253, 245, 229)", duration: .900, delay: 0.0, ease: "none" },
         );
       }.bind(this)
     );
@@ -141,7 +140,7 @@ class Main extends HTMLElement
       );
     };
 
-    parallel
+    series
     (
       [
         // TODO: check if we use all these
@@ -164,9 +163,10 @@ class Main extends HTMLElement
 
   createComponentInstances(fCB)
   {
-    parallel
+    series
     (
       [
+        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._header = new Header(fCB); }.bind(this),
         function(fCB) { this.components._acknowledgement = new Acknowledgement(fCB); }.bind(this),
         function(fCB) { this.components._curriculumvitae = new Curriculumvitae(fCB); }.bind(this),
@@ -186,6 +186,7 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
+    DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._header, this.domShadowRoot);
     DOM.append(this.components._acknowledgement, this.domShadowRoot);
     DOM.append(this.components._curriculumvitae, this.domShadowRoot);
@@ -208,12 +209,13 @@ class Main extends HTMLElement
     // We call it once, as the browser initially doesn't fire this event
     this.onDomScrollCallback()
 
-    const onDomLoaded = function(fCB)
-    {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB(); }.bind(this));
-    };
+    // const onDomLoaded = function(fCB)
+    // {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB(); }.bind(this));
+    // };
+    fCB();
 
-    onDomLoaded(fCB);
+    // onDomLoaded(fCB);
   };
 
   onDomScrollCallback = function(e)

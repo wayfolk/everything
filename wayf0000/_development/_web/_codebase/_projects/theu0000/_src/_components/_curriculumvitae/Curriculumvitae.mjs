@@ -27,6 +27,9 @@ import imgClientHM from "./_assets/_images/client_h&m_500x250_q80.webp";
 import imgClientBOplay from "./_assets/_images/client_b&oplay_500x250_q80.webp";
 import imgClientNickelodeon from "./_assets/_images/client_nickelodeon_500x250_q80.webp";
 
+///// DOWNLOAD ASSETS
+import pdfCurriculumVitae from "./_assets/_downloads/20230810_curriculumvitae_theundebruijn.pdf";
+
 /////////////////
 ///// CLASS /////
 /////////////////
@@ -99,6 +102,9 @@ class Curriculumvitae extends HTMLElement
       const domTemplateHTML = document.createElement("template");
       domTemplateHTML.innerHTML = sHTML;
 
+      const domDownloadCV = domTemplateHTML.content.querySelectorAll("section .download")[0];
+      domDownloadCV.setAttribute("href", pdfCurriculumVitae);
+
       // TODO: do this by overwriting the CSS instead? hmm
       // this does give us some control over asset loading
       const domClientNike = domTemplateHTML.content.querySelectorAll("section .clients .client.nike")[0];
@@ -139,21 +145,21 @@ class Curriculumvitae extends HTMLElement
 
   setEventHandlers(fCB)
   {
-    let onDomLoaded = function(fCB2) {
-      window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
-    };
+    // let onDomLoaded = function(fCB2) {
+    //   window.addEventListener("DOMContentLoaded", function(e) { fCB2(); }.bind(this));
+    // };
 
-    parallel(
-      [
-        function (fCB2) { onDomLoaded(fCB2) }.bind(this),
-      ],
-      function (err, results)
-      {
-        console.log("_curriculumvitae: setEventHandlers: done");
+    // parallel(
+    //   [
+    //     function (fCB2) { onDomLoaded(fCB2) }.bind(this),
+    //   ],
+    //   function (err, results)
+    //   {
+    //     console.log("_curriculumvitae: setEventHandlers: done");
 
         fCB();
-      }.bind(this)
-    );
+      // }.bind(this)
+    // );
   };
 
   //////////////////////////
