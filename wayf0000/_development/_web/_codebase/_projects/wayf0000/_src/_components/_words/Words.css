@@ -7,6 +7,7 @@
 .column
 {
   margin: 0 auto;
+  padding: 0 0 100px 0;
   max-width: 960px;
 }
 @media (max-width: 1399.98px) {}
@@ -53,7 +54,7 @@
 {
   font-family: "font_0001_b";
   font-weight: 500;
-  color: #de3629;
+  color: #ff2515;
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)
@@ -79,6 +80,7 @@
 {
   font-family: "font_0001_bi";
   font-weight: 500;
+  /* color: #787878; */
 }
 @media (max-width: 1399.98px) {}
 @media (max-width: 1199.98px)

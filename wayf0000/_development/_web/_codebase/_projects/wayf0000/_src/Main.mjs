@@ -202,7 +202,7 @@ class Main extends HTMLElement
     // );
 
     // // We call it once, as the browser initially doesn't fire this event
-    // this.onDomScrollCallback()
+    this.onDomScrollCallback()
 
     // const onDomLoaded = function(fCB)
     // {
