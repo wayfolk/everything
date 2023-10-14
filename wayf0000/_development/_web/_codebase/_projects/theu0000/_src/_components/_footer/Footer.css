@@ -52,10 +52,10 @@ footer .wip
   top: -320px;
   left: 0;
   right: 0;
-  font-family: "font_0002_l";
+  font-family: "font_0003_eli";
   font-size: 42px;
   line-height: 62px;
-  color: rgb(213, 205, 187);
+  color: rgb(172, 165, 149);
   pointer-events: none;
 
   /* opacity: 0; */
@@ -83,7 +83,7 @@ footer .wip
   footer .wip
   {
     top: -130px;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 30px;
   }
 }

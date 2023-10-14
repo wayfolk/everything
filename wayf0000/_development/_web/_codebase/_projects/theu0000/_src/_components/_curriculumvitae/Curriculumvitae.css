@@ -87,7 +87,7 @@ section p.description .cute
 
 section a.download
 {
-  display: block;
+  display: inline-block;
   margin: 0 auto 100px auto;
   font-family: "font_0003_li";
   font-size: 27px;
@@ -131,9 +131,9 @@ section .clients
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 50px 110px;
+  gap: 70px 110px;
   margin: 0 auto;
-  padding: 50px 0 60px 0;
+  padding: 60px 0 90px 0;
   width: 100%;
   max-width: 1400px;
   background-color: rgb(254, 96, 62);

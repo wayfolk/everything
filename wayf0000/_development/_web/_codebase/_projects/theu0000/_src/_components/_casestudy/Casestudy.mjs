@@ -109,11 +109,11 @@ class Casestudy extends HTMLElement
         const domClient = domTemplateHTML.content.querySelectorAll("section .container .client")[0];
         domClient.style.backgroundImage = "url(" + imgClientGorillaz + ")";
 
-        const domGorillazAwardsImage0001 = domTemplateHTML.content.querySelectorAll("section .container .awards .image.Clio")[0];
-        domGorillazAwardsImage0001.style.backgroundImage = "url(" + imgGorillazAwards0001 + ")";
+        // const domGorillazAwardsImage0001 = domTemplateHTML.content.querySelectorAll("section .container .awards .image.Clio")[0];
+        // domGorillazAwardsImage0001.style.backgroundImage = "url(" + imgGorillazAwards0001 + ")";
 
-        const domGorillazAwardsImage0002 = domTemplateHTML.content.querySelectorAll("section .container .awards .image.Cannes")[0];
-        domGorillazAwardsImage0002.style.backgroundImage = "url(" + imgGorillazAwards0002 + ")";
+        // const domGorillazAwardsImage0002 = domTemplateHTML.content.querySelectorAll("section .container .awards .image.Cannes")[0];
+        // domGorillazAwardsImage0002.style.backgroundImage = "url(" + imgGorillazAwards0002 + ")";
 
         const domGorillazImage0001 = domTemplateHTML.content.querySelectorAll("section .image.Murdoc")[0];
         domGorillazImage0001.style.backgroundImage = "url(" + imgGorillaz0001 + ")";
