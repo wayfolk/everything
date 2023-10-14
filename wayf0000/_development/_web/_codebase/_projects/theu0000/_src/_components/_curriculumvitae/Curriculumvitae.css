@@ -16,13 +16,34 @@ section
   width: 100%;
   text-align: center;
 }
+@media (max-width: 1399.98px)
+{
+  section
+  {
+    padding: 100px 0 200px 0;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  section
+  {
+    padding: 80px 0 100px 0;
+  }
+}
+@media (max-width: 575.98px)
+{
+  section
+  {
+    padding: 80px 0 100px 0;
+  }
+}
 
 section p.description
 {
   margin: 0 0 50px 0;
   font-family: "font_0002_l";
   font-size: 42px;
-  line-height: 62px;
+  line-height: 66px;
 
   opacity: 0;
 }
@@ -30,16 +51,29 @@ section p.description
 {
   section p.description
   {
-    /* font-size: 38px; */
+    font-size: 38px;
+    line-height: 57px;
   }
 }
 @media (max-width: 1199.98px)
 {
-
+  section p.description
+  {
+    margin: 0 0 30px 0;
+    font-size: 20px;
+    line-height: 33px;
+  }
 }
 @media (max-width: 575.98px)
 {
-
+  section p.description
+  {
+    margin: 0 auto 25px auto;
+    width: 240px;
+    font-size: 17px;
+    line-height: 30px;
+    text-align: left;
+  }
 }
 
 section p.description b
@@ -54,7 +88,7 @@ section p.description .cute
 section a.download
 {
   display: block;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 100px auto;
   font-family: "font_0003_li";
   font-size: 27px;
   color: rgb(110, 110, 110);
@@ -64,40 +98,133 @@ section a.download
 
   opacity: 0;
 }
+@media (max-width: 1399.98px)
+{
+  section a.download
+  {
+    margin: 0 auto 80px auto;
+    font-size: 25px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  section a.download
+  {
+    margin: 0 auto 60px auto;
+    font-size: 18px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  section a.download
+  {
+    margin: 0 auto 70px auto;
+    width: 240px;
+    font-size: 17px;
+    line-height: 30px;
+    text-align: left;
+  }
+}
 
 section .clients
 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 50px 110px;
   margin: 0 auto;
-  padding: 50px 0 0 0;
+  padding: 50px 0 60px 0;
   width: 100%;
   max-width: 1400px;
-  height: 370px;
-  /* background-color: rgb(228, 254, 207); */
   background-color: rgb(254, 96, 62);
 
   opacity: 0;
 }
+@media (max-width: 1399.98px)
+{
+  section .clients
+  {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  section .clients
+  {
+    max-width: 520px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  section .clients
+  {
+    max-width: 280px;
+  }
+}
 
 section .clients .client
 {
-  /* margin: 60px 0 30px 130px; */
-  /* float: left; */
-  /* flex-basis: 25%; */
-  margin: 0 60px;
   width: 200px;
   height: 100px;
   background-size: 100% 100%;
+}
+@media (max-width: 1399.98px)
+{
+  section .clients .client
+  {
+    width: 180px;
+    height: 90px;
+  }
+}
+@media (max-width: 1199.98px)
+{
+  section .clients .client
+  {
+    width: 120px;
+    height: 60px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  section .clients .client
+  {
+    width: 100px;
+    height: 50px;
+  }
 }
 
 section .rights
 {
   margin: 45px auto 0 auto;
-  width: 1600px;
-  text-align: right;
   font-family: "font_0003_li";
   font-size: 17px;
   color: rgb(110, 110, 110);
+
+  opacity: 0;
+}
+@media (max-width: 1399.98px)
+{
+  section .rights
+  {
+
+  }
+}
+@media (max-width: 1199.98px)
+{
+  section .rights
+  {
+    padding: 0 40px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 575.98px)
+{
+  section .rights
+  {
+    padding: 0 40px;
+    width: 270px;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: left;
+  }
 }

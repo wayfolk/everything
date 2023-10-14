@@ -226,6 +226,18 @@ class Curriculumvitae extends HTMLElement
       { opacity: .0 }, { opacity: 1, stagger: { each: .100 }, duration: .900, delay: .900 + nDelay, ease: "none" },
     );
 
+    // Animate rights.
+    gsap.fromTo
+    (
+      this.domReferences.domRights,
+      { y: 25, }, { y: 0, duration: .900, delay: 1.600 + nDelay, ease: "sine.out" },
+    );
+    gsap.fromTo
+    (
+      this.domReferences.domRights,
+      { opacity: .0 }, { opacity: 1, duration: .900, delay: 1.600 + nDelay, ease: "none" },
+    );
+
     // TODO?: Bind this to the lengthiest animation method.
     setTimeout(function() {
       console.log("_curriculumvitae: intro(): done");
