@@ -137,11 +137,14 @@ class Casestudy extends HTMLElement
         const domClient = domTemplateHTML.content.querySelectorAll("section .container .client")[0];
         domClient.style.backgroundImage = "url(" + imgClientGoogle + ")";
 
-        const domVideoGES0001Src = domTemplateHTML.content.querySelectorAll("section video.ges0001")[0].children[0];
-        domVideoGES0001Src.setAttribute("src", videoGES0001);
+        const domVideoGES0001Src = domTemplateHTML.content.querySelectorAll("section video.ges0001")[0];
+        const videoSource = '<source src="'+ videoGES0001 + '" type="video/mp4">';
+        domVideoGES0001Src.innerHTML = videoSource;
 
-        const domVideoGES0002Src= domTemplateHTML.content.querySelectorAll("section video.ges0002")[0].children[0];
-        domVideoGES0002Src.setAttribute("src", videoGES0002);
+        const domVideoGES0002Src= domTemplateHTML.content.querySelectorAll("section video.ges0002")[0];
+        const videoSource2 = '<source src="'+ videoGES0002 + '" type="video/mp4" >';
+        domVideoGES0002Src.innerHTML = videoSource2;
+        // domVideoGES0002Src.setAttribute("src", videoGES0002);
 
         this.domShadowRoot.appendChild
         (
