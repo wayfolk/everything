@@ -245,7 +245,7 @@ class Builder
         { "theundebruijn_icon_192x192.png": "theundebruijn_icon_192x192_" + this.sUniqueBuildUUID +".png" },
         { "wayfolk_icon_192x192_16bit_sRGB.png": "wayfolk_icon_192x192_16bit_sRGB_" + this.sUniqueBuildUUID +".png" },
         { "theundebruijn_shareimage_3840x1700.png": "theundebruijn_shareimage_3840x1700_" + this.sUniqueBuildUUID +".png" },
-        { "theundebruijn_shareimage_3840x1700.png": "theundebruijn_shareimage_3840x1700_" + this.sUniqueBuildUUID +".png" },
+        { "wayfolk_shareimage_3840x1700.png": "wayfolk_shareimage_3840x1700_" + this.sUniqueBuildUUID +".png" },
       ]
     );
 
