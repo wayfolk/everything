@@ -21,7 +21,7 @@ import font_0001_500 from "./_assets/_fonts/font_0001_500.woff2";
 import font_0001_500i from "./_assets/_fonts/font_0001_500i.woff2";
 
 ///// COMPONENTS
-// import WebGL from "./_components/_webgl/WebGL.mjs";
+import WebGL from "./_components/_webgl/WebGL.mjs";
 import Introduction from "./_components/_introduction/Introduction.mjs";
 import Words from "./_components/_words/Words.mjs";
 import Footer from "./_components/_footer/Footer.mjs";
@@ -63,8 +63,6 @@ class Main extends HTMLElement
       function (err, results)
       {
         console.log("_main: __init: done");
-
-        console.log("donezo's. all components initialized.")
 
         // TODO?: refac this?
         // Handle the color of the body here instead of CSS, so we don't get a flash on first paint.
@@ -172,7 +170,7 @@ class Main extends HTMLElement
     series
     (
       [
-        // function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
+        function(fCB) { this.components._webGL = new WebGL(fCB); }.bind(this),
         function(fCB) { this.components._introduction = new Introduction(fCB); }.bind(this),
         function(fCB) { this.components._words = new Words(fCB); }.bind(this),
         function(fCB) { this.components._footer = new Footer(fCB); }.bind(this),
@@ -189,7 +187,7 @@ class Main extends HTMLElement
 
   populateShadowDOM(fCB)
   {
-    // DOM.append(this.components._webGL, this.domShadowRoot);
+    DOM.append(this.components._webGL, this.domShadowRoot);
     DOM.append(this.components._introduction, this.domShadowRoot);
     DOM.append(this.components._words, this.domShadowRoot);
     DOM.append(this.components._footer, this.domShadowRoot);

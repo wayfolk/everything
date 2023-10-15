@@ -31,14 +31,8 @@ import sHTML from './WebGL.html';
 import sCSS from './WebGL.css';
 
 /// WEBGL ASSETS
-// import dracoTheManInTheWall_LOD0 from './_assets/the-man-in-the-wall_LOD0.glb';
-// import dracoTheManInTheWall_LOD1 from './_assets/the-man-in-the-wall_LOD1.glb';
-// import dracoTheVeil_LOD0 from './_assets/the-veil_LOD0.glb';
-// import dracoTheVeil_LOD1 from './_assets/the-veil_LOD1.glb';
-// import dracoAnotherWorldAwaits_LOD0 from './_assets/another-world-awaits_LOD0.glb';
-// import dracoAnotherWorldAwaits_LOD1 from './_assets/another-world-awaits_LOD1.glb';
-import dracoHome_LOD0 from './_assets/home_LOD0.glb';
-import dracoHome_LOD1 from './_assets/home_LOD1.glb';
+import dracoTheManInTheWall_LOD0 from './_assets/the-man-in-the-wall_LOD0.glb';
+import dracoTheManInTheWall_LOD1 from './_assets/the-man-in-the-wall_LOD1.glb';
 
 /////////////////
 ///// CLASS /////
@@ -282,7 +276,7 @@ class WebGL extends HTMLElement
     (
       {
         brightness: 0.065, // [-1.0, 1.0]
-        contrast: 0.0, // [-1.0, 1.0]
+        contrast: -0.25, // [-1.0, 1.0]
       }
     );
 
@@ -290,7 +284,7 @@ class WebGL extends HTMLElement
     (
       {
         hue: 0.0, // in radians
-        saturation: 0.035, // [-1.0, 1.0]
+        saturation: -0.5, // [-1.0, 1.0]
       }
     );
 
@@ -317,10 +311,7 @@ class WebGL extends HTMLElement
     dracoLoader.setDecoderPath('/_assets/_draco/');
     gltfLoader.setDRACOLoader(dracoLoader);
 
-    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheManInTheWall_LOD0 : dracoTheManInTheWall_LOD1);
-    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheVeil_LOD0 : dracoTheVeil_LOD1);
-    const assetToLoad = (!ENV.getGPU().isMobile ? dracoAnotherWorldAwaits_LOD0 : dracoAnotherWorldAwaits_LOD1);
-    // const assetToLoad = (!ENV.getGPU().isMobile ? dracoHome_LOD0 : dracoHome_LOD1);
+    const assetToLoad = (!ENV.getGPU().isMobile ? dracoTheManInTheWall_LOD0 : dracoTheManInTheWall_LOD1);
     
     gltfLoader.load(assetToLoad, function(gltf) {
       this.resources["sample_draco"] = gltf;
@@ -344,8 +335,8 @@ class WebGL extends HTMLElement
             resource.castShadow = true;
             resource.receiveShadow = true;
 
-            resource.material.roughness = .450;
-            resource.material.metalness = .025;
+            resource.material.roughness = 0.600;
+            resource.material.metalness = 0.250;
 
             if (resource.material.map !== null)
             {
@@ -392,29 +383,29 @@ class WebGL extends HTMLElement
     // mirror.rotation.x =  Math.PI / 2;
     // this.scene.add(mirror);
 
-    this.entities.lights['pointLight'] = new THREE.PointLight(0xffffff, 25000, 500, 2.0);
-    this.entities.lights['pointLight'].position.set(0, -100, -25);
+    this.entities.lights['pointLight'] = new THREE.PointLight(0xffffff, 1500, 0, 2.0);
+    this.entities.lights['pointLight'].position.set(0, 25, 0);
 
     this.scene.add( this.entities.lights['pointLight'] );
 
     // this.entities.helpers['axesHelper'] = new THREE.AxesHelper(25);
-    // this.entities.helpers['axesHelper'].visible = false;
+    // this.entities.helpers['axesHelper'].visible = true;
     // this.scene.add(this.entities.helpers['axesHelper']);
 
     // this.entities.helpers['gridHelper'] = new THREE.GridHelper(100, 10, 0x808080, 0x808080);
     // this.entities.helpers['gridHelper'].position.y = 0;
     // this.entities.helpers['gridHelper'].position.x = 0;
-    // this.entities.helpers['gridHelper'].visible = false;
+    // this.entities.helpers['gridHelper'].visible = true;
     // this.scene.add(this.entities.helpers['gridHelper']);
 
     // this.entities.helpers['polarGridHelper'] = new THREE.PolarGridHelper(200, 16, 8, 64, 0x808080, 0x808080);
     // this.entities.helpers['polarGridHelper'].position.y = 0;
     // this.entities.helpers['polarGridHelper'].position.x = 0;
-    // this.entities.helpers['polarGridHelper'].visible = false;
+    // this.entities.helpers['polarGridHelper'].visible = true;
     // this.scene.add(this.entities.helpers['polarGridHelper']);
 
     // this.entities.helpers['pointLightHelper'] = new THREE.PointLightHelper(this.entities.lights['pointLight'], 1.0, 0x808080);
-    // this.entities.helpers['pointLightHelper'].visible = false;
+    // this.entities.helpers['pointLightHelper'].visible = true;
     // this.scene.add(this.entities.helpers['pointLightHelper']);
 
     fCB();
@@ -430,9 +421,9 @@ class WebGL extends HTMLElement
     this.controls.enabled = false;
 
 
-    this.controls.target.x = 4.332140571237076
-    this.controls.target.y = -4.277790315650077;
-    this.controls.target.z = -5.198334749258187;
+    // this.controls.target.x = 4.332140571237076
+    // this.controls.target.y = -4.277790315650077;
+    // this.controls.target.z = -5.198334749258187;
 
     window.controls = this.controls; // for easy logging
 
@@ -451,11 +442,11 @@ class WebGL extends HTMLElement
       // map domelem width to a smaller range
       if (e.type === "mousemove")
       {
-        val = map(e.clientX, 0, this.domElement.clientWidth, -70, 70);
+        val = map(e.clientX, 0, this.domElement.clientWidth, -25, 25);
       }
       else if (e.type === "touchmove")
       {
-        val = map(e.touches[0].clientX, 0, this.domElement.clientWidth, -70, 70);
+        val = map(e.touches[0].clientX, 0, this.domElement.clientWidth, -25, 25);
       };
 
       gsap.killTweensOf(this.entities.lights['pointLight'].position);
@@ -475,17 +466,17 @@ class WebGL extends HTMLElement
 
   createAnimationLoop(fCB)
   {
-    gsap.to
-    (
-      this.controls.target,
-      { x: -1.4702856715492076, y: -3.8835876309720274, z: -5.06633388070523, duration: 50.000, ease: "sine.inOut", repeat: -1, yoyo: true },
-    );
+    // gsap.to
+    // (
+    //   this.controls.target,
+    //   { x: -1.4702856715492076, y: -3.8835876309720274, z: -5.06633388070523, duration: 50.000, ease: "sine.inOut", repeat: -1, yoyo: true },
+    // );
 
-    gsap.to
-    (
-      this.camera.position,
-      { x: -25.720904331048878, y: -24.389446311270923, z: 58.042843238499984, duration: 50.000, ease: "sine.inOut", repeat: -1, yoyo: true },
-    );
+    // gsap.to
+    // (
+    //   this.camera.position,
+    //   { x: -25.720904331048878, y: -24.389446311270923, z: 58.042843238499984, duration: 50.000, ease: "sine.inOut", repeat: -1, yoyo: true },
+    // );
 
 
     this.renderer.setAnimationLoop(this.tick.bind(this));
@@ -508,6 +499,8 @@ class WebGL extends HTMLElement
 
   tick()
   {
+
+    this.resources["sample_draco"].scene.rotation.y += 0.001;
     // this order is important!
     this.controls.update();
     this.composer.render();

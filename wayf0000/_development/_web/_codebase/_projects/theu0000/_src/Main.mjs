@@ -69,8 +69,6 @@ class Main extends HTMLElement
       {
         console.log("_main: __init: done");
 
-        console.log("donezo's. all components initialized.")
-
         // TODO?: refac this?
         // Handle the color of the body here instead of CSS, so we don't get a flash on first paint.
         // The delay prevents an ugly blend with the component .intro() animations.
