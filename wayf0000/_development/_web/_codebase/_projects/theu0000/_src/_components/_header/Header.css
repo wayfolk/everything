@@ -26,8 +26,9 @@ header
 
   /* color: rgb(228, 254, 207); */
 
-  color: rgb(255, 0, 0);
-  mix-blend-mode: hard-light;
+  /* color: rgb(255, 0, 0); */
+  color: #fe603e;
+  /* mix-blend-mode: hard-light; */
 }
 @media (max-width: 1399.98px)
 {

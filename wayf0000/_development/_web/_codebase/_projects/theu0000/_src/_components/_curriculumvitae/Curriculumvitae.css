@@ -137,7 +137,8 @@ section .clients
   padding: 60px 0 90px 0;
   width: 100%;
   max-width: 1400px;
-  background-color: rgb(254, 96, 62);
+  /* background-color: rgb(254, 96, 62); */
+  background-color: #fe603e;
 
   opacity: 0;
 }

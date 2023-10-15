@@ -23,10 +23,10 @@ import imgClientGoogle from "./_assets/_images/client_google_500x250_q80.webp";
 import imgClientGorillaz from "./_assets/_images/client_gorillaz_500x250_q80.webp";
 import imgGorillaz0001 from "./_assets/_images/gorillaz0001_2949x2540_q80.webp";
 import imgGorillaz0002 from "./_assets/_images/gorillaz0002_1426x3002_q80.webp";
-import imgGorillazAwards0001 from "./_assets/_images/awards_clio_500x500_q80.webp";
-import imgGorillazAwards0002 from "./_assets/_images/awards_cannes_500x500_q80.webp";
-import videoGES0001 from "./_assets/_videos/ges0001_1920x1080p-60hz-rec709-h264-main42-vbr2pass-12to15mbit-sw_noauditotrack.mp4";
-import videoGES0002 from "./_assets/_videos/ges0002_1280x720p-60hz-rec709-h264-main41-vbr2pass-8to12mbit-sw_noauditotrack.mp4";
+// import imgGorillazAwards0001 from "./_assets/_images/awards_clio_500x500_q80.webp";
+// import imgGorillazAwards0002 from "./_assets/_images/awards_cannes_500x500_q80.webp";
+// import videoGES0001 from "./_assets/_videos/ges0001_1920x1080p-60hz-rec709-h264-main42-vbr2pass-12to15mbit-sw_noauditotrack.mp4";
+// import videoGES0002 from "./_assets/_videos/ges0002_1280x720p-60hz-rec709-h264-main41-vbr2pass-8to12mbit-sw_noauditotrack.mp4";
 
 /////////////////
 ///// CLASS /////
@@ -137,14 +137,13 @@ class Casestudy extends HTMLElement
         const domClient = domTemplateHTML.content.querySelectorAll("section .container .client")[0];
         domClient.style.backgroundImage = "url(" + imgClientGoogle + ")";
 
-        const domVideoGES0001Src = domTemplateHTML.content.querySelectorAll("section video.ges0001")[0];
-        const videoSource = '<source src="'+ videoGES0001 + '" type="video/mp4">';
-        domVideoGES0001Src.innerHTML = videoSource;
+        // const domVideoGES0001Src = domTemplateHTML.content.querySelectorAll("section video.ges0001")[0];
+        // const videoSource = '<source src="'+ videoGES0001 + '" type="video/mp4">';
+        // domVideoGES0001Src.innerHTML = videoSource;
 
-        const domVideoGES0002Src= domTemplateHTML.content.querySelectorAll("section video.ges0002")[0];
-        const videoSource2 = '<source src="'+ videoGES0002 + '" type="video/mp4" >';
-        domVideoGES0002Src.innerHTML = videoSource2;
-        // domVideoGES0002Src.setAttribute("src", videoGES0002);
+        // const domVideoGES0002Src= domTemplateHTML.content.querySelectorAll("section video.ges0002")[0];
+        // const videoSource2 = '<source src="'+ videoGES0002 + '" type="video/mp4" >';
+        // domVideoGES0002Src.innerHTML = videoSource2;
 
         this.domShadowRoot.appendChild
         (
