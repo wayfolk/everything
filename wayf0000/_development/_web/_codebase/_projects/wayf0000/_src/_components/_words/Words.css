@@ -59,7 +59,7 @@
 .column h1
 {
   font-family: "font_0001_500";
-  /* font-weight: 500; */
+  font-weight: 500;
   font-size: 40px;
   /* color: white; */
 }
