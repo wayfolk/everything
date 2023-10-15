@@ -29,11 +29,17 @@
     <style>
     html
     {
-      overflow-x: hidden;
+      /* safari hack.
+      needed on both html and body.
+      if not, absolute elements stretch the viewport horizontally. */
+      overflow-x: hidden; 
     }
     body
     {
       margin: 0;
+      /* safari hack.
+      needed on both html and body.
+      if not, absolute elements stretch the viewport horizontally. */
       overflow-x: hidden;
     }
     body::-webkit-scrollbar
