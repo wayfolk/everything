@@ -67,12 +67,12 @@ class Main extends HTMLElement
         // TODO?: refac this?
         // Handle the color of the body here instead of CSS, so we don't get a flash on first paint.
         // The delay prevents an ugly blend with the component .intro() animations.
-        gsap.fromTo
+        gsap.to
         (
           document.body,
-          { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
+          // { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
           // { backgroundColor: "rgb(53, 99, 124)", duration: .900, delay: 0.0, ease: "none" },
-          { backgroundColor: "rgb(166, 166, 166)", duration: .900, delay: 0.0, ease: "none" },
+          { backgroundColor: "rgb(241, 240, 222)", duration: .900, delay: 0.0, ease: "none" },
         );
       }.bind(this)
     );
