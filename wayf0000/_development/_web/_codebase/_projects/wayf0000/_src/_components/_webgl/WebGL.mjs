@@ -55,7 +55,7 @@ class WebGL extends HTMLElement
   aPositions = new Array(Object.create(null), Object.create(null), Object.create(null));
 
   domElement = null;
-  domOverlayElement = null;
+  // domOverlayElement = null;
 
   constructor(fOptionalCB)
   {
@@ -130,7 +130,7 @@ class WebGL extends HTMLElement
     }
 
     this.domElement = this.domShadowRoot.querySelector("#webgl");
-    this.domOverlayElement = this.domShadowRoot.querySelector("#overlay");
+    // this.domOverlayElement = this.domShadowRoot.querySelector("#overlay");
 
     fCB();
   };
