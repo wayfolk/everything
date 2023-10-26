@@ -72,7 +72,7 @@ class Main extends HTMLElement
           document.body,
           { backgroundColor: "rgb(255, 255, 255)"}, // start from here to avoid an ungly transition using just gsap.to
           // { backgroundColor: "rgb(53, 99, 124)", duration: .900, delay: 0.0, ease: "none" },
-          { backgroundColor: "rgb(252, 255, 236)", duration: .900, delay: 0.0, ease: "none" },
+          { backgroundColor: "rgb(166, 166, 166)", duration: .900, delay: 0.0, ease: "none" },
         );
       }.bind(this)
     );
