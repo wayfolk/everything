@@ -41,7 +41,7 @@
   font-size: 27px;
   font-weight: 400;
   line-height: 50px;
-  color: rgb(252, 255, 236);
+  color: rgb(166, 166, 166);
 } 
 @media (max-width: 1399.98px)
 {
@@ -100,7 +100,7 @@
   padding: 0 0 50px 0;
   font-family: "font_0001_300";
   font-size: 23px;
-  color: rgb(252, 255, 236);
+  color: rgb(166, 166, 166);
 }
 @media (max-width: 1399.98px)
 {
